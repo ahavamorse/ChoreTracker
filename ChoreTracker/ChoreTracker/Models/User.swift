@@ -9,5 +9,7 @@
 import Foundation
 
 struct User {
-    
+    var name: String
+    // var password: String
+    // var chores: [Chore]
 }

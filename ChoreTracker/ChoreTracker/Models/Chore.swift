@@ -9,7 +9,8 @@
 import Foundation
 
 struct Chore {
+    var name: String
     var nextPerson: User
     var description: String
-    var users: [User]
+    // var users: [User]
 }
