@@ -8,9 +8,30 @@
 
 import Foundation
 
-struct Chore {
+class Chore: Equatable {
+    
     var name: String
-    var nextPerson: User
-    var description: String
-    // var users: [User]
+    var nextUser: User {
+        get {
+            return users[0]
+        }
+    }
+    var frequency: String
+    var users: [User]
+    var instructions: String
+    
+    static func == (lhs: Chore, rhs: Chore) -> Bool {
+        if lhs.name == rhs.name {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    init(name: String, users: [User], frequency: String, instructions: String) {
+        self.name = name
+        self.users = users
+        self.frequency = frequency
+        self.instructions = instructions
+    }
 }

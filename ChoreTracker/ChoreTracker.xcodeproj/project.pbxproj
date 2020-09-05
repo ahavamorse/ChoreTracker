@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB60F95124F412CE002E7C54 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60F95024F412CE002E7C54 /* UserController.swift */; };
+		EB60F95324F41CD1002E7C54 /* ChoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60F95224F41CD1002E7C54 /* ChoreDetailsViewController.swift */; };
+		EB60F95524F41CE2002E7C54 /* AddChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60F95424F41CE2002E7C54 /* AddChoreViewController.swift */; };
+		EB60F95724FD7132002E7C54 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60F95624FD7132002E7C54 /* NewUserViewController.swift */; };
 		EBA006B424D3567C00FB97F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA006B324D3567C00FB97F4 /* AppDelegate.swift */; };
 		EBA006B624D3567C00FB97F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA006B524D3567C00FB97F4 /* SceneDelegate.swift */; };
 		EBA006BB24D3567C00FB97F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA006B924D3567C00FB97F4 /* Main.storyboard */; };
@@ -14,9 +18,16 @@
 		EBA006C024D3567E00FB97F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA006BE24D3567E00FB97F4 /* LaunchScreen.storyboard */; };
 		EBA006CB24D3582F00FB97F4 /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA006CA24D3582F00FB97F4 /* Chore.swift */; };
 		EBA006CD24D3591000FB97F4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA006CC24D3591000FB97F4 /* User.swift */; };
+		EBB1684D24E1BA960040A1FC /* ChoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB1684C24E1BA960040A1FC /* ChoreController.swift */; };
+		EBB1685024E1CA910040A1FC /* ChoreListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB1684F24E1CA910040A1FC /* ChoreListCollectionViewController.swift */; };
+		EBB1685524E30F360040A1FC /* ChoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB1685424E30F360040A1FC /* ChoreCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB60F95024F412CE002E7C54 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		EB60F95224F41CD1002E7C54 /* ChoreDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreDetailsViewController.swift; sourceTree = "<group>"; };
+		EB60F95424F41CE2002E7C54 /* AddChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChoreViewController.swift; sourceTree = "<group>"; };
+		EB60F95624FD7132002E7C54 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		EBA006B024D3567C00FB97F4 /* ChoreTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA006B324D3567C00FB97F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBA006B524D3567C00FB97F4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +37,9 @@
 		EBA006C124D3567E00FB97F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBA006CA24D3582F00FB97F4 /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
 		EBA006CC24D3591000FB97F4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EBB1684C24E1BA960040A1FC /* ChoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreController.swift; sourceTree = "<group>"; };
+		EBB1684F24E1CA910040A1FC /* ChoreListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreListCollectionViewController.swift; sourceTree = "<group>"; };
+		EBB1685424E30F360040A1FC /* ChoreCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoreCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +72,10 @@
 		EBA006B224D3567C00FB97F4 /* ChoreTracker */ = {
 			isa = PBXGroup;
 			children = (
+				EBB1684E24E1CA2C0040A1FC /* ViewControllers */,
 				EBA006C824D357E200FB97F4 /* Controllers */,
 				EBA006C724D357D000FB97F4 /* Models */,
+				EBB1685324E30EC20040A1FC /* Views */,
 				EBA006B924D3567C00FB97F4 /* Main.storyboard */,
 				EBA006C924D3580C00FB97F4 /* Extras */,
 			);
@@ -78,6 +94,8 @@
 		EBA006C824D357E200FB97F4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EBB1684C24E1BA960040A1FC /* ChoreController.swift */,
+				EB60F95024F412CE002E7C54 /* UserController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -92,6 +110,25 @@
 				EBA006C124D3567E00FB97F4 /* Info.plist */,
 			);
 			path = Extras;
+			sourceTree = "<group>";
+		};
+		EBB1684E24E1CA2C0040A1FC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EBB1684F24E1CA910040A1FC /* ChoreListCollectionViewController.swift */,
+				EB60F95224F41CD1002E7C54 /* ChoreDetailsViewController.swift */,
+				EB60F95424F41CE2002E7C54 /* AddChoreViewController.swift */,
+				EB60F95624FD7132002E7C54 /* NewUserViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EBB1685324E30EC20040A1FC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EBB1685424E30F360040A1FC /* ChoreCollectionViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,9 +202,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB60F95524F41CE2002E7C54 /* AddChoreViewController.swift in Sources */,
+				EBB1685024E1CA910040A1FC /* ChoreListCollectionViewController.swift in Sources */,
 				EBA006CD24D3591000FB97F4 /* User.swift in Sources */,
+				EB60F95124F412CE002E7C54 /* UserController.swift in Sources */,
 				EBA006CB24D3582F00FB97F4 /* Chore.swift in Sources */,
+				EBB1684D24E1BA960040A1FC /* ChoreController.swift in Sources */,
+				EBB1685524E30F360040A1FC /* ChoreCollectionViewCell.swift in Sources */,
 				EBA006B424D3567C00FB97F4 /* AppDelegate.swift in Sources */,
+				EB60F95724FD7132002E7C54 /* NewUserViewController.swift in Sources */,
+				EB60F95324F41CD1002E7C54 /* ChoreDetailsViewController.swift in Sources */,
 				EBA006B624D3567C00FB97F4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,7 +358,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5DB846Q2S9;
-				INFOPLIST_FILE = ChoreTracker/Info.plist;
+				INFOPLIST_FILE = ChoreTracker/Extras/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,7 +376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5DB846Q2S9;
-				INFOPLIST_FILE = ChoreTracker/Info.plist;
+				INFOPLIST_FILE = ChoreTracker/Extras/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
