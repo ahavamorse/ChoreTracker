@@ -10,7 +10,6 @@ import UIKit
 
 class ChoreListCollectionViewController: UICollectionViewController {
 
-    
     let choreController = ChoreController()
     let userController = UserController()
     
@@ -25,6 +24,11 @@ class ChoreListCollectionViewController: UICollectionViewController {
         choreController.addChore(newChore: Chore(name: "Put away and load dishwasher", users: userController.users, frequency: "", instructions: ""))
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        collectionView.reloadData()
+    }
     
     // MARK: - Navigation
 
@@ -43,11 +47,8 @@ class ChoreListCollectionViewController: UICollectionViewController {
         } else if let destination = segue.destination as? UsersTableViewController {
             destination.userController = userController
         }
-        
-        
     }
     
-
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -65,8 +66,11 @@ class ChoreListCollectionViewController: UICollectionViewController {
             fatalError("Cell is not a ChoreCollectionViewCell") }
         
         cell.chore = choreController.chores[indexPath.row]
-        cell.nextUser = choreController.chores[indexPath.row].nextUser
             
         return cell
+    }
+    
+    @IBAction func loadChores(_ sender: UIBarButtonItem) {
+        collectionView.reloadData()
     }
 }

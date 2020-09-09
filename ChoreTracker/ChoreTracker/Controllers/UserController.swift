@@ -10,6 +10,7 @@ import Foundation
 
 class UserController {
     
+    // Temporary users for testing
     var users: [User] = [User(name: "Asher"), User(name: "Harmony"), User(name: "Ahava")]
     
     func addUser(newUser: User) {
@@ -20,5 +21,7 @@ class UserController {
         if let index = users.firstIndex(of: user) {
             users.remove(at: index)
         }
+        
+        // TODO: remove user from chore user lists
     }
 }

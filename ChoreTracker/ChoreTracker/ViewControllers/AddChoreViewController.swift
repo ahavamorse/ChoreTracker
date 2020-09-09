@@ -63,6 +63,5 @@ class AddChoreViewController: UIViewController {
             }
         }
         navigationController?.popViewController(animated: true)
-        navigationController?.popViewController(animated: true)
     }
 }

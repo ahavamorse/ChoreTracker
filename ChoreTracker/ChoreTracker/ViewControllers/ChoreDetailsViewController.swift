@@ -25,7 +25,6 @@ class ChoreDetailsViewController: UIViewController {
         updateViews()
     }
     
-    
     func updateViews() {
         if let chore = chore {
             choreNameLabel.text = chore.name
@@ -45,6 +44,7 @@ class ChoreDetailsViewController: UIViewController {
         
         destination.chore = chore
         destination.userController = userController
+        destination.choreController = choreController
     }
 
     @IBAction func completeChore(_ sender: UIButton) {
@@ -52,6 +52,8 @@ class ChoreDetailsViewController: UIViewController {
             let chore = chore {
             choreController.completeChore(chore: chore)
         }
+        
+        // TODO: reload data
     }
     
     @IBAction func skipUser(_ sender: UIButton) {
@@ -59,5 +61,8 @@ class ChoreDetailsViewController: UIViewController {
             let chore = chore {
             choreController.skipUser(chore: chore)
         }
+        
+        // TODO: reload data
+        
     }
 }
