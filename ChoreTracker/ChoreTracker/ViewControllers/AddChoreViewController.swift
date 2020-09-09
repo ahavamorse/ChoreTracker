@@ -29,6 +29,9 @@ class AddChoreViewController: UIViewController {
             choreNameTextField.text = chore.name
             frequencyTextField.text = chore.frequency
             instructionsTextView.text = chore.instructions
+            navigationController?.title = "Edit Chore"
+        } else {
+            navigationController?.title = "Add Chore"
         }
     }
 
@@ -59,5 +62,7 @@ class AddChoreViewController: UIViewController {
                 choreController.addChore(newChore: newChore)
             }
         }
+        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }

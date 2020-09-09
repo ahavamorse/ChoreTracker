@@ -10,15 +10,12 @@ import Foundation
 
 struct User: Equatable {
     var name: String
-    var isExtra: Bool
-    // var password: String
-    // var chores: [Chore]
     
-    static func == (lhs: User, rhs: User) -> Bool {
-        if lhs.name == rhs.name {
-            return true
-        } else {
-            return false
-        }
-    }
+//    static func == (lhs: User, rhs: User) -> Bool {
+//        if lhs.name == rhs.name {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Chore: Equatable {
+struct Chore: Equatable {
     
     var name: String
     var nextUser: User {

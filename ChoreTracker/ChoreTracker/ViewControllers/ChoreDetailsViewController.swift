@@ -16,7 +16,6 @@ class ChoreDetailsViewController: UIViewController {
     @IBOutlet weak var instructionsTextView: UITextView!
     
     var chore: Chore?
-    var nextUser: User?
     var choreController: ChoreController?
     var userController: UserController?
     
@@ -30,7 +29,7 @@ class ChoreDetailsViewController: UIViewController {
     func updateViews() {
         if let chore = chore {
             choreNameLabel.text = chore.name
-            nextUserLabel.text = "Next User: \(nextUser?.name)"
+            nextUserLabel.text = "Next User: \(chore.nextUser.name)"
             frequencyLabel.text = chore.frequency
             instructionsTextView.text = chore.instructions
         
@@ -41,8 +40,7 @@ class ChoreDetailsViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
         guard let destination = segue.destination as? AddChoreViewController else { return }
         
         destination.chore = chore
@@ -51,17 +49,15 @@ class ChoreDetailsViewController: UIViewController {
 
     @IBAction func completeChore(_ sender: UIButton) {
         if let choreController = choreController,
-            let chore = chore,
-            let nextUser = nextUser {
-            choreController.completeChore(chore: chore, user: nextUser)
+            let chore = chore {
+            choreController.completeChore(chore: chore)
         }
     }
     
     @IBAction func skipUser(_ sender: UIButton) {
-        if let chore = chore,
-            let nextUser = nextUser {
-            guard let index = chore.users.firstIndex(of: nextUser) else { return }
-            self.nextUser = chore.users[index + 1]
+        if let choreController = choreController,
+            let chore = chore {
+            choreController.skipUser(chore: chore)
         }
     }
 }

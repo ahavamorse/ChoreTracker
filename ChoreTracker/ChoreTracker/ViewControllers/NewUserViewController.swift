@@ -10,10 +10,12 @@ import UIKit
 
 class NewUserViewController: UIViewController {
 
+    var userController: UserController?
+    
+    @IBOutlet weak var UserNameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
 
@@ -26,5 +28,11 @@ class NewUserViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func addUser(_ sender: UIBarButtonItem) {
+        if let userController = userController,
+            let name = UserNameTextField.text {
+            userController.addUser(newUser: User(name: name))        }
+        navigationController?.popViewController(animated: true)
+    }
+    
 }

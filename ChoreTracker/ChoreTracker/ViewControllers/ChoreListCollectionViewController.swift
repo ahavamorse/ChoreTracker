@@ -20,6 +20,7 @@ class ChoreListCollectionViewController: UICollectionViewController {
         // Register cell classes
         self.collectionView!.register(ChoreCollectionViewCell.self, forCellWithReuseIdentifier: "ChoreCell")
 
+        // Temporary chores for testing
         choreController.addChore(newChore: Chore(name: "Take out trash", users: userController.users, frequency: "", instructions: ""))
         choreController.addChore(newChore: Chore(name: "Put away and load dishwasher", users: userController.users, frequency: "", instructions: ""))
     }
@@ -33,12 +34,13 @@ class ChoreListCollectionViewController: UICollectionViewController {
         if let destination = segue.destination as? ChoreDetailsViewController,
             let indexPath: IndexPath = collectionView.indexPathsForSelectedItems?[0] {
             destination.chore = choreController.chores[indexPath.row]
-            destination.nextUser = choreController.chores[indexPath.row].nextUser
             destination.choreController = choreController
             destination.userController = userController
             
         } else if let destination = segue.destination as? AddChoreViewController {
             destination.choreController = choreController
+            destination.userController = userController
+        } else if let destination = segue.destination as? UsersTableViewController {
             destination.userController = userController
         }
         
@@ -49,7 +51,6 @@ class ChoreListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 

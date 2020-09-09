@@ -21,6 +21,7 @@ class ChoreCollectionViewCell: UICollectionViewCell {
     }
     
     func updateViews() {
+        
         choreNameLabel?.text = chore?.name
         nextUserLabel?.text = nextUser?.name
         print("Chore: \(chore!.name)")

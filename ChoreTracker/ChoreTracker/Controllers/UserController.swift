@@ -10,7 +10,7 @@ import Foundation
 
 class UserController {
     
-    var users: [User] = [User(name: "Asher", isExtra: false), User(name: "Harmony", isExtra: false), User(name: "Ahava", isExtra: false)]
+    var users: [User] = [User(name: "Asher"), User(name: "Harmony"), User(name: "Ahava")]
     
     func addUser(newUser: User) {
         users.append(newUser)

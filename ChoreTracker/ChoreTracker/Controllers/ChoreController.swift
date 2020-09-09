@@ -12,15 +12,17 @@ class ChoreController {
     
     var chores: [Chore] = []
     
-    func completeChore(chore: Chore, user: User) {
-        if let index = chore.users.firstIndex(of: user) {
-            chore.users.remove(at: index)
-            chore.users.append(user)
+    func completeChore(chore: Chore) {
+        if let choreIndex = chores.firstIndex(of: chore) {
+            let user = chore.nextUser
+            chores[choreIndex].users.remove(at: 0)
+            chores[choreIndex].users.append(user)
         }
     }
     
-    func skipUser(chore: Chore, user: User) {
-        
+    func skipUser(chore: Chore) {
+        // Can be upgraded later to allow catch up
+        completeChore(chore: chore)
     }
     
     func addChore(newChore: Chore) {
@@ -28,9 +30,11 @@ class ChoreController {
     }
     
     func editChore(from oldChore: Chore, into newChore: Chore) {
-        guard let index = chores.firstIndex(of: oldChore) else { return }
-        chores.remove(at: index)
-        chores.insert(newChore, at: index)
+        
+        if let choreIndex = chores.firstIndex(of: oldChore) {
+            chores.remove(at: choreIndex)
+            chores.insert(newChore, at: choreIndex)
+        }
     }
     
     func deleteChore(chore: Chore) {
