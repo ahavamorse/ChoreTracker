@@ -17,16 +17,16 @@ class ChoreListCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         // Register cell classes
-        self.collectionView!.register(ChoreCollectionViewCell.self, forCellWithReuseIdentifier: "ChoreCell")
+//        self.collectionView!.register(ChoreCollectionViewCell.self, forCellWithReuseIdentifier: "ChoreCell")
 
         // Temporary chores for testing
         choreController.addChore(newChore: Chore(name: "Take out trash", users: userController.users, frequency: "", instructions: ""))
         choreController.addChore(newChore: Chore(name: "Put away and load dishwasher", users: userController.users, frequency: "", instructions: ""))
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         collectionView.reloadData()
     }
     
