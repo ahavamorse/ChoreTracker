@@ -20,8 +20,19 @@ class ChoreListCollectionViewController: UICollectionViewController {
 //        self.collectionView!.register(ChoreCollectionViewCell.self, forCellWithReuseIdentifier: "ChoreCell")
 
         // Temporary chores for testing
-        choreController.addChore(newChore: Chore(name: "Take out trash", users: userController.users, frequency: "", instructions: ""))
-        choreController.addChore(newChore: Chore(name: "Put away and load dishwasher", users: userController.users, frequency: "", instructions: ""))
+//        choreController.addChore(newChore: Chore(name: "Take out trash", users: userController.users, frequency: "", instructions: ""))
+//        choreController.addChore(newChore: Chore(name: "Put away and load dishwasher", users: userController.users, frequency: "", instructions: ""))
+        
+//        choreController.put(chore: Chore(name: "Take out trash", users: userController.users, frequency: "", instructions: ""))
+//        choreController.put(chore: Chore(name: "Put away and load dishwasher", users: userController.users, frequency: "", instructions: ""))
+        
+        
+        
+        choreController.getChores { (error) in
+            if let error = error {
+                NSLog("Error: \(error)")
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

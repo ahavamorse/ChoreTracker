@@ -25,6 +25,12 @@ class ChoreDetailsViewController: UIViewController {
         updateViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateViews()
+    }
+    
     func updateViews() {
         if let chore = chore {
             choreNameLabel.text = chore.name
