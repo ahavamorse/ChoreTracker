@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 class UserController {
     
-    let baseURL: URL = URL(string: "https://choretracker-c5d22.firebaseio.com/")!
     var users: [User]
+    let baseURL: URL = URL(string: "https://choretracker-c5d22.firebaseio.com/")!
+    let uuid = UIDevice.current.identifierForVendor?.uuidString
     
     var userListUrl: URL? {
         
@@ -52,7 +54,14 @@ class UserController {
     }
     
     func getUsers(completion: @escaping (Error?) -> ()) {
-            let getUsersUrl = baseURL.appendingPathComponent("users").appendingPathExtension("json")
+        guard let uuid = uuid else {
+            completion(NSError(domain: "No uuid", code: 0, userInfo: nil))
+            return
+        }
+        
+        let userUrl = baseURL.appendingPathComponent(uuid)
+        
+            let getUsersUrl = userUrl.appendingPathComponent("users").appendingPathExtension("json")
             
             var request = URLRequest(url: getUsersUrl)
             request.httpMethod = "GET"
@@ -96,7 +105,14 @@ class UserController {
         }
     
     func putUsers() {
-        let putUsersUrl = baseURL.appendingPathComponent("users").appendingPathExtension("json")
+        guard let uuid = uuid else {
+            NSLog("No uuid")
+            return
+        }
+        
+        let userUrl = baseURL.appendingPathComponent(uuid)
+        
+        let putUsersUrl = userUrl.appendingPathComponent("users").appendingPathExtension("json")
         
         var request = URLRequest(url: putUsersUrl)
         
@@ -151,6 +167,11 @@ class UserController {
             print("recovered users")
         } catch {
             print("Couldn't load users: \(error)")
+            getUsers { (error) in
+                if let error = error {
+                    NSLog("Error: \(error)")
+                }
+            }
         }
     }
 }

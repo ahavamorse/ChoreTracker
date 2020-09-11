@@ -92,7 +92,13 @@ class ChoreController {
     }
     
     func getChores(completion: @escaping (Error?) -> ()) {
-        let getChoresUrl = baseURL.appendingPathComponent("chores").appendingPathExtension("json")
+        guard let uuid = uuid else {
+            completion(NSError(domain: "No uuid", code: 0, userInfo: nil))
+            return
+        }
+        
+        let userUrl = baseURL.appendingPathComponent(uuid)
+        let getChoresUrl = userUrl.appendingPathComponent("chores").appendingPathExtension("json")
         
         var request = URLRequest(url: getChoresUrl)
         request.httpMethod = "GET"
@@ -136,7 +142,14 @@ class ChoreController {
     }
     
     func putChores() {
-        let putChoresUrl = baseURL.appendingPathComponent("chores").appendingPathExtension("json")
+        guard let uuid = uuid else {
+            NSLog("No uuid")
+            return
+        }
+        
+        let userUrl = baseURL.appendingPathComponent(uuid)
+        
+        let putChoresUrl = userUrl.appendingPathComponent("chores").appendingPathExtension("json")
         
         var request = URLRequest(url: putChoresUrl)
         
@@ -191,6 +204,11 @@ class ChoreController {
             print("recovered chores")
         } catch {
             print("Couldn't load chores: \(error)")
+            getChores { (error) in
+                if let error = error {
+                    NSLog("Error: \(error)")
+                }
+            }
         }
     }
 }

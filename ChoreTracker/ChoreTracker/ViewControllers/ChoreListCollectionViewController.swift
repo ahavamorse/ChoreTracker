@@ -10,7 +10,7 @@ import UIKit
 
 class ChoreListCollectionViewController: UICollectionViewController {
     
-    // TODO: Split chores into families (with passwords?) URGENT
+    // TODO: Split chores into families (with passwords?) URGENT - current solution: save locally
 
     let choreController = ChoreController()
     let userController = UserController()
