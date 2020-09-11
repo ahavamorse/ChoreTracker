@@ -9,6 +9,8 @@
 import UIKit
 
 class ChoreListCollectionViewController: UICollectionViewController {
+    
+    // TODO: Split chores into families (with passwords?) URGENT
 
     let choreController = ChoreController()
     let userController = UserController()
@@ -78,6 +80,8 @@ class ChoreListCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // TODO: Allow sorting alphabetically or by next user etc.
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChoreCell", for: indexPath) as? ChoreCollectionViewCell else {
             fatalError("Cell is not a ChoreCollectionViewCell") }

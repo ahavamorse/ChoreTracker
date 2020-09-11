@@ -29,6 +29,8 @@ class ChoreDetailsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         updateViews()
+        
+        // TODO: Update views after editing the chore URGENT
     }
     
     func updateViews() {

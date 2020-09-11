@@ -11,12 +11,33 @@ import Foundation
 class UserController {
     
     let baseURL: URL = URL(string: "https://choretracker-c5d22.firebaseio.com/")!
-    var users: [User] = []
+    var users: [User]
+    
+    var userListUrl: URL? {
+        
+        let fileManager = FileManager.default
+        let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        let usersUrl = documentsDir?.appendingPathComponent("UserList.plist")
+        
+        return usersUrl
+    }
+    
+    init() {
+        users = []
+        getUsers { (error) in
+            if let error = error {
+                NSLog("Error: \(error)")
+            }
+        }
+        
+        loadFromPersistentStore()
+    }
     
     func addUser(newUser: User) {
         users.append(newUser)
         
         putUsers()
+        saveToPersistentStore()
     }
     
     func deleteUser(user: User) {
@@ -25,8 +46,9 @@ class UserController {
         }
         
         putUsers()
+        saveToPersistentStore()
         
-        // TODO: remove user from chore user lists
+        // TODO: remove user from chore user lists SOON HOW?
     }
     
     func getUsers(completion: @escaping (Error?) -> ()) {
@@ -101,5 +123,34 @@ class UserController {
                 return
             }
         }.resume()
+    }
+    
+    func saveToPersistentStore() {
+        do {
+            
+            let encoder = PropertyListEncoder()
+            let usersData = try encoder.encode(users)
+            guard let userListUrl = userListUrl else { return }
+            try usersData.write(to: userListUrl)
+            
+            print("saved")
+        } catch {
+            print("Couldn't save list: \(error)")
+        }
+    }
+    
+    func loadFromPersistentStore() {
+        do {
+            guard let userListUrl = userListUrl else { return }
+            
+            let usersPlist = try Data(contentsOf: userListUrl)
+            let decoder = PropertyListDecoder()
+            let decodedUsers = try decoder.decode([User].self, from: usersPlist)
+            self.users = decodedUsers
+            
+            print("recovered")
+        } catch {
+            print("Couldn't load books: \(error)")
+        }
     }
 }

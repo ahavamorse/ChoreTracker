@@ -10,8 +10,29 @@ import Foundation
 
 class ChoreController {
     
-    var chores: [Chore] = []
+    var chores: [Chore]
     let baseURL: URL = URL(string: "https://choretracker-c5d22.firebaseio.com/")!
+    
+    var choreListUrl: URL? {
+        
+        let fileManager = FileManager.default
+        let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        let choresUrl = documentsDir?.appendingPathComponent("ChoreList.plist")
+        
+        return choresUrl
+    }
+    
+    // Same to userController (erase getChores from viewController)
+    init() {
+        chores = []
+        getChores { (error) in
+            if let error = error {
+                NSLog("Error: \(error)")
+            }
+        }
+        
+        loadFromPersistentStore()
+    }
     
     func completeChore(chore: Chore) -> Chore {
         if let choreIndex = chores.firstIndex(of: chore) {
@@ -20,6 +41,7 @@ class ChoreController {
             chores[choreIndex].users.append(user)
             
             putChores()
+            saveToPersistentStore()
             
             return chores[choreIndex]
         } else {
@@ -28,13 +50,14 @@ class ChoreController {
     }
     
     func skipUser(chore: Chore) -> Chore {
-        // Can be upgraded later to allow catch up
+        // TODO: Come back to user
         if let choreIndex = chores.firstIndex(of: chore) {
             let user = chore.nextUser
             chores[choreIndex].users.remove(at: 0)
             chores[choreIndex].users.append(user)
             
             putChores()
+            saveToPersistentStore()
             
             return chores[choreIndex]
         } else {
@@ -45,6 +68,7 @@ class ChoreController {
     func addChore(newChore: Chore) {
         chores.append(newChore)
         putChores()
+        saveToPersistentStore()
     }
     
     func editChore(from oldChore: Chore, into newChore: Chore) {
@@ -54,6 +78,7 @@ class ChoreController {
             chores.insert(newChore, at: choreIndex)
         }
         putChores()
+        saveToPersistentStore()
     }
     
     func deleteChore(chore: Chore) {
@@ -61,6 +86,7 @@ class ChoreController {
             chores.remove(at: index)
         }
         putChores()
+        saveToPersistentStore()
     }
     
     func getChores(completion: @escaping (Error?) -> ()) {
@@ -137,4 +163,32 @@ class ChoreController {
         }.resume()
     }
     
+    func saveToPersistentStore() {
+        do {
+            
+            let encoder = PropertyListEncoder()
+            let choresData = try encoder.encode(chores)
+            guard let choreListUrl = choreListUrl else { return }
+            try choresData.write(to: choreListUrl)
+            
+            print("saved")
+        } catch {
+            print("Couldn't save list: \(error)")
+        }
+    }
+    
+    func loadFromPersistentStore() {
+        do {
+            guard let choreListUrl = choreListUrl else { return }
+            
+            let choresPlist = try Data(contentsOf: choreListUrl)
+            let decoder = PropertyListDecoder()
+            let decodedChores = try decoder.decode([Chore].self, from: choresPlist)
+            self.chores = decodedChores
+            
+            print("recovered")
+        } catch {
+            print("Couldn't load books: \(error)")
+        }
+    }
 }
