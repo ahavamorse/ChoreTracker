@@ -21,21 +21,6 @@ class ChoreListCollectionViewController: UICollectionViewController {
         // Register cell classes
 //        self.collectionView!.register(ChoreCollectionViewCell.self, forCellWithReuseIdentifier: "ChoreCell")
         
-        choreController.getChores { (error) in
-            if let error = error {
-                NSLog("Error: \(error)")
-            } else {
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
-        }
-        
-        userController.getUsers { (error) in
-            if let error = error {
-                NSLog("Error: \(error)")
-            }
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -89,9 +74,5 @@ class ChoreListCollectionViewController: UICollectionViewController {
         cell.chore = choreController.chores[indexPath.row]
             
         return cell
-    }
-    
-    @IBAction func loadChores(_ sender: UIBarButtonItem) {
-        collectionView.reloadData()
     }
 }

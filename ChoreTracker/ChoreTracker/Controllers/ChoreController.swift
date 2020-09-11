@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 class ChoreController {
     
     var chores: [Chore]
     let baseURL: URL = URL(string: "https://choretracker-c5d22.firebaseio.com/")!
+    let uuid = UIDevice.current.identifierForVendor?.uuidString
     
     var choreListUrl: URL? {
         
@@ -25,11 +27,11 @@ class ChoreController {
     // Same to userController (erase getChores from viewController)
     init() {
         chores = []
-        getChores { (error) in
-            if let error = error {
-                NSLog("Error: \(error)")
-            }
-        }
+//        getChores { (error) in
+//            if let error = error {
+//                NSLog("Error: \(error)")
+//            }
+//        }
         
         loadFromPersistentStore()
     }
@@ -171,9 +173,9 @@ class ChoreController {
             guard let choreListUrl = choreListUrl else { return }
             try choresData.write(to: choreListUrl)
             
-            print("saved")
+            print("saved chores")
         } catch {
-            print("Couldn't save list: \(error)")
+            print("Couldn't save chores: \(error)")
         }
     }
     
@@ -186,9 +188,9 @@ class ChoreController {
             let decodedChores = try decoder.decode([Chore].self, from: choresPlist)
             self.chores = decodedChores
             
-            print("recovered")
+            print("recovered chores")
         } catch {
-            print("Couldn't load books: \(error)")
+            print("Couldn't load chores: \(error)")
         }
     }
 }

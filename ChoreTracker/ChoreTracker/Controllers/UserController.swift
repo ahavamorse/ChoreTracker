@@ -24,11 +24,11 @@ class UserController {
     
     init() {
         users = []
-        getUsers { (error) in
-            if let error = error {
-                NSLog("Error: \(error)")
-            }
-        }
+//        getUsers { (error) in
+//            if let error = error {
+//                NSLog("Error: \(error)")
+//            }
+//        }
         
         loadFromPersistentStore()
     }
@@ -133,9 +133,9 @@ class UserController {
             guard let userListUrl = userListUrl else { return }
             try usersData.write(to: userListUrl)
             
-            print("saved")
+            print("saved users")
         } catch {
-            print("Couldn't save list: \(error)")
+            print("Couldn't save users: \(error)")
         }
     }
     
@@ -148,9 +148,9 @@ class UserController {
             let decodedUsers = try decoder.decode([User].self, from: usersPlist)
             self.users = decodedUsers
             
-            print("recovered")
+            print("recovered users")
         } catch {
-            print("Couldn't load books: \(error)")
+            print("Couldn't load users: \(error)")
         }
     }
 }

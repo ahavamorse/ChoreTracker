@@ -71,18 +71,11 @@
                                 <segue destination="Nkq-Uf-LDq" kind="show" id="BY8-cP-ytp"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="3c4-td-nIN">
-                                <connections>
-                                    <segue destination="WcL-jG-4sc" kind="show" id="gQd-Yo-DBR"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Sync Chores" id="Dlp-ud-HKh">
-                                <connections>
-                                    <action selector="loadChores:" destination="Sjy-2p-gJg" id="fUd-cp-onw"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3c4-td-nIN">
+                            <connections>
+                                <segue destination="WcL-jG-4sc" kind="show" id="gQd-Yo-DBR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vvb-Wr-ys4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -349,6 +342,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cfF-V3-ymh"/>
+        <segue reference="gQd-Yo-DBR"/>
     </inferredMetricsTieBreakers>
 </document>
