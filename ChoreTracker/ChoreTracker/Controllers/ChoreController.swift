@@ -81,7 +81,7 @@ class ChoreController {
                 return
             }
             
-            print(String(data: data, encoding: .utf8))
+//            print(String(data: data, encoding: .utf8))
             
             let decoder = JSONDecoder()
             do {
@@ -90,6 +90,7 @@ class ChoreController {
                 for (chore) in chores {
                     self.chores.append(chore)
                 }
+                
                 completion(nil)
             } catch {
                 NSLog("Error decoding chore objects: \(error)")

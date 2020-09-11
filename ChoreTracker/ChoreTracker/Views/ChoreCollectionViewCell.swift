@@ -25,8 +25,8 @@ class ChoreCollectionViewCell: UICollectionViewCell {
             choreNameLabel?.text = chore.name
             nextUserLabel?.text = "Next User: \(chore.nextUser.name)"
         }
-        print("Chore: \(chore!.name)")
-        print("Next user: \(chore!.nextUser.name)")
-        print("frequency: \(chore!.frequency)")
+//        print("Chore: \(chore!.name)")
+//        print("Next user: \(chore!.nextUser.name)")
+//        print("frequency: \(chore!.frequency)")
     }
 }
