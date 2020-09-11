@@ -19,6 +19,8 @@ class ChoreController {
             chores[choreIndex].users.remove(at: 0)
             chores[choreIndex].users.append(user)
             
+            putChores()
+            
             return chores[choreIndex]
         } else {
             return chore
@@ -32,6 +34,8 @@ class ChoreController {
             chores[choreIndex].users.remove(at: 0)
             chores[choreIndex].users.append(user)
             
+            putChores()
+            
             return chores[choreIndex]
         } else {
             return chore
@@ -40,6 +44,7 @@ class ChoreController {
     
     func addChore(newChore: Chore) {
         chores.append(newChore)
+        putChores()
     }
     
     func editChore(from oldChore: Chore, into newChore: Chore) {
@@ -48,12 +53,14 @@ class ChoreController {
             chores.remove(at: choreIndex)
             chores.insert(newChore, at: choreIndex)
         }
+        putChores()
     }
     
     func deleteChore(chore: Chore) {
         if let index = chores.firstIndex(of: chore) {
             chores.remove(at: index)
         }
+        putChores()
     }
     
     func getChores(completion: @escaping (Error?) -> ()) {
@@ -100,19 +107,19 @@ class ChoreController {
         }.resume()
     }
     
-    func put(chore: Chore) {
-        let addChoreUrl = baseURL.appendingPathComponent("chores").appendingPathExtension("json")
+    func putChores() {
+        let putChoresUrl = baseURL.appendingPathComponent("chores").appendingPathExtension("json")
         
-        var request = URLRequest(url: addChoreUrl)
+        var request = URLRequest(url: putChoresUrl)
         
-        request.httpMethod = "POST"
+        request.httpMethod = "PUT"
         
         let jsonEncoder = JSONEncoder()
         do {
-            let jsonData = try jsonEncoder.encode(chore)
+            let jsonData = try jsonEncoder.encode(self.chores)
             request.httpBody = jsonData
         } catch {
-            NSLog("Error encoding album object: \(error)")
+            NSLog("Error encoding chore objects: \(error)")
             return
         }
         

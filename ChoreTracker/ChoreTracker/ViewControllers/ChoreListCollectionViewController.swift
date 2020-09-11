@@ -18,6 +18,7 @@ class ChoreListCollectionViewController: UICollectionViewController {
         
         // Register cell classes
 //        self.collectionView!.register(ChoreCollectionViewCell.self, forCellWithReuseIdentifier: "ChoreCell")
+        
         choreController.getChores { (error) in
             if let error = error {
                 NSLog("Error: \(error)")
@@ -25,6 +26,12 @@ class ChoreListCollectionViewController: UICollectionViewController {
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
+            }
+        }
+        
+        userController.getUsers { (error) in
+            if let error = error {
+                NSLog("Error: \(error)")
             }
         }
     }
