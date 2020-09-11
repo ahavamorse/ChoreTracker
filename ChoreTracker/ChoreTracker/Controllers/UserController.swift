@@ -13,17 +13,18 @@ class UserController {
     let baseURL: URL = URL(string: "https://choretracker-c5d22.firebaseio.com/")!
     var users: [User] = []
     
-    // Temporary users for testing
-//    var users: [User] = [User(name: "Asher"), User(name: "Harmony"), User(name: "Ahava")]
-    
     func addUser(newUser: User) {
         users.append(newUser)
+        
+        putUsers()
     }
     
     func deleteUser(user: User) {
         if let index = users.firstIndex(of: user) {
             users.remove(at: index)
         }
+        
+        putUsers()
         
         // TODO: remove user from chore user lists
     }
@@ -72,5 +73,33 @@ class UserController {
             }.resume()
         }
     
-    
+    func putUsers() {
+        let putUsersUrl = baseURL.appendingPathComponent("users").appendingPathExtension("json")
+        
+        var request = URLRequest(url: putUsersUrl)
+        
+        request.httpMethod = "PUT"
+        
+        let jsonEncoder = JSONEncoder()
+        do {
+            let jsonData = try jsonEncoder.encode(self.users)
+            request.httpBody = jsonData
+        } catch {
+            NSLog("Error encoding user objects: \(error)")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { (_, response, error) in
+            if let error = error {
+                NSLog("Other error: \(error)")
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                NSLog("Status code: \(response.statusCode)")
+                return
+            }
+        }.resume()
+    }
 }

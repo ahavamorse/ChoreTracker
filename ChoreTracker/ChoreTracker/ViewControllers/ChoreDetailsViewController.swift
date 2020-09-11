@@ -37,9 +37,6 @@ class ChoreDetailsViewController: UIViewController {
             nextUserLabel.text = "Next User:  \(chore.nextUser.name)"
             frequencyLabel.text = chore.frequency
             instructionsTextView.text = chore.instructions
-        
-            print(nextUserLabel.text)
-            print("Next User: \(chore.nextUser.name)")
         }
     }
 
