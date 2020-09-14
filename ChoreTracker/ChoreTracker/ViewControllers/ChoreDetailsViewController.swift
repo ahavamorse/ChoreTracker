@@ -15,7 +15,16 @@ class ChoreDetailsViewController: UIViewController {
     @IBOutlet weak var frequencyLabel: UILabel!
     @IBOutlet weak var instructionsTextView: UITextView!
     
-    var chore: Chore?
+    var chore: Chore? {
+        if let choreController = choreController,
+            let choreIndex = choreIndex {
+            return choreController.chores[choreIndex]
+        } else {
+            return nil
+        }
+    }
+    
+    var choreIndex: Int?
     var choreController: ChoreController?
     var userController: UserController?
     
@@ -57,7 +66,7 @@ class ChoreDetailsViewController: UIViewController {
     @IBAction func completeChore(_ sender: UIButton) {
         if let choreController = choreController,
             let chore = chore {
-            self.chore = choreController.completeChore(chore: chore)
+            choreController.completeChore(chore: chore)
         }
         updateViews()
     }
@@ -65,7 +74,7 @@ class ChoreDetailsViewController: UIViewController {
     @IBAction func skipUser(_ sender: UIButton) {
         if let choreController = choreController,
             let chore = chore {
-            self.chore = choreController.skipUser(chore: chore)
+            choreController.skipUser(chore: chore)
         }
         updateViews()
     }

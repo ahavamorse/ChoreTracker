@@ -10,7 +10,7 @@ import UIKit
 
 class ChoreListCollectionViewController: UICollectionViewController {
     
-    // TODO: Split chores into families (with passwords?) URGENT - current solution: save locally
+    // TODO: Split chores into families (with passwords?) URGENT - current solution: save locally (can load from api if none locally)
 
     let choreController = ChoreController()
     let userController = UserController()
@@ -41,7 +41,8 @@ class ChoreListCollectionViewController: UICollectionViewController {
         
         if let destination = segue.destination as? ChoreDetailsViewController,
             let indexPath: IndexPath = collectionView.indexPathsForSelectedItems?[0] {
-            destination.chore = choreController.chores[indexPath.row]
+            
+            destination.choreIndex = indexPath.row
             destination.choreController = choreController
             destination.userController = userController
             

@@ -36,7 +36,7 @@ class ChoreController {
         loadFromPersistentStore()
     }
     
-    func completeChore(chore: Chore) -> Chore {
+    func completeChore(chore: Chore) {
         if let choreIndex = chores.firstIndex(of: chore) {
             let user = chore.nextUser
             chores[choreIndex].users.remove(at: 0)
@@ -44,14 +44,10 @@ class ChoreController {
             
             putChores()
             saveToPersistentStore()
-            
-            return chores[choreIndex]
-        } else {
-            return chore
         }
     }
     
-    func skipUser(chore: Chore) -> Chore {
+    func skipUser(chore: Chore) {
         // TODO: Come back to user
         if let choreIndex = chores.firstIndex(of: chore) {
             let user = chore.nextUser
@@ -60,10 +56,6 @@ class ChoreController {
             
             putChores()
             saveToPersistentStore()
-            
-            return chores[choreIndex]
-        } else {
-            return chore
         }
     }
     
