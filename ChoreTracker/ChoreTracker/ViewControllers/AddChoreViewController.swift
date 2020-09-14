@@ -53,12 +53,15 @@ class AddChoreViewController: UIViewController {
             let frequency = frequencyTextField.text,
             let instructions = instructionsTextView.text {
             
-            let newChore = Chore(name: choreName, users: userController.users, frequency: frequency, instructions: instructions)
-            
             if let oldChore = chore {
+                
+                let newChore = Chore(name: choreName, users: oldChore.users, frequency: frequency, instructions: instructions)
+                
                 choreController.editChore(from: oldChore, into: newChore)
                 
             } else {
+                
+                let newChore = Chore(name: choreName, users: userController.users, frequency: frequency, instructions: instructions)
                 // TODO: Which users will do this chore
                 choreController.addChore(newChore: newChore)
             }

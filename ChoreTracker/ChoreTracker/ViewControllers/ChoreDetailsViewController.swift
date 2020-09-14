@@ -39,7 +39,7 @@ class ChoreDetailsViewController: UIViewController {
         
         updateViews()
         
-        // TODO: Update views after editing the chore URGENT
+        // TODO: Fix so that nextUser doesn't start over after editing
     }
     
     func updateViews() {

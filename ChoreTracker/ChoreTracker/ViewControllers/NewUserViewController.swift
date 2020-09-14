@@ -19,6 +19,8 @@ class NewUserViewController: UIViewController {
     }
     
     @IBAction func addUser(_ sender: UIBarButtonItem) {
+        // TODO: Add new users to old chores
+        
         if let userController = userController,
             let name = UserNameTextField.text {
             userController.addUser(newUser: User(name: name))        }
