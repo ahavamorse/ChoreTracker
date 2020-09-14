@@ -51,6 +51,7 @@ class ChoreListCollectionViewController: UICollectionViewController {
             destination.userController = userController
         } else if let destination = segue.destination as? UsersTableViewController {
             destination.userController = userController
+            destination.choreController = choreController
         }
     }
     

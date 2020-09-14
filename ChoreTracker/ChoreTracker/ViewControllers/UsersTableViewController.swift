@@ -11,6 +11,7 @@ import UIKit
 class UsersTableViewController: UITableViewController {
 
     var userController: UserController?
+    var choreController: ChoreController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +52,14 @@ class UsersTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if let userController = userController {
-                userController.deleteUser(user: userController.users[indexPath.row])
+            if let userController = userController,
+                let choreController = choreController {
+                
+                let user = userController.users[indexPath.row]
+                
+                userController.deleteUser(user: user)
+                choreController.removeUser(user: user)
+                
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
         }

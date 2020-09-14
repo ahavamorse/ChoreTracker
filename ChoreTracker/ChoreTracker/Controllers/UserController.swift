@@ -26,12 +26,6 @@ class UserController {
     
     init() {
         users = []
-//        getUsers { (error) in
-//            if let error = error {
-//                NSLog("Error: \(error)")
-//            }
-//        }
-        
         loadFromPersistentStore()
     }
     
@@ -49,8 +43,6 @@ class UserController {
         
         putUsers()
         saveToPersistentStore()
-        
-        // TODO: remove user from chore user lists SOON HOW?
     }
     
     func getUsers(completion: @escaping (Error?) -> ()) {

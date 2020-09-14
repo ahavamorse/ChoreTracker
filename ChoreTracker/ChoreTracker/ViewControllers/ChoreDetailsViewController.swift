@@ -38,8 +38,6 @@ class ChoreDetailsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         updateViews()
-        
-        // TODO: Fix so that nextUser doesn't start over after editing
     }
     
     func updateViews() {

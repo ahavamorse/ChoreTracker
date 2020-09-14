@@ -83,6 +83,16 @@ class ChoreController {
         saveToPersistentStore()
     }
     
+    func removeUser(user: User) {
+        for index in 0...chores.count - 1 {
+            if let userIndex = chores[index].users.firstIndex(of: user) {
+                chores[index].users.remove(at: userIndex)
+            }
+        }
+        putChores()
+        saveToPersistentStore()
+    }
+    
     func getChores(completion: @escaping (Error?) -> ()) {
         guard let uuid = uuid else {
             completion(NSError(domain: "No uuid", code: 0, userInfo: nil))
