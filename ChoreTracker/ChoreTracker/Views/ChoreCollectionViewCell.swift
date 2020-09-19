@@ -13,17 +13,18 @@ class ChoreCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var choreNameLabel: UILabel!
     @IBOutlet weak var nextUserLabel: UILabel!
     
-    var chore: Chore?
-    var nextUser: User? {
+    var chore: Chore? {
         didSet {
             updateViews()
         }
     }
     
     func updateViews() {
-        choreNameLabel?.text = chore?.name
-        nextUserLabel?.text = nextUser?.name
-        print("Chore: \(chore!.name)")
-        print("Next user: \(nextUser!.name)")
+        
+        if let chore = chore {
+            choreNameLabel?.text = chore.name
+            nextUserLabel?.text = "Next User: \(chore.nextUser.name)"
+        }
+        
     }
 }

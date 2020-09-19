@@ -11,6 +11,9 @@
 		EB60F95324F41CD1002E7C54 /* ChoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60F95224F41CD1002E7C54 /* ChoreDetailsViewController.swift */; };
 		EB60F95524F41CE2002E7C54 /* AddChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60F95424F41CE2002E7C54 /* AddChoreViewController.swift */; };
 		EB60F95724FD7132002E7C54 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60F95624FD7132002E7C54 /* NewUserViewController.swift */; };
+		EB60F95925092D4C002E7C54 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60F95825092D4C002E7C54 /* UsersTableViewController.swift */; };
+		EB60F95D250FCEB7002E7C54 /* SelectUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60F95C250FCEB7002E7C54 /* SelectUsersTableViewController.swift */; };
+		EB60F95F250FCFFE002E7C54 /* SelectUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60F95E250FCFFE002E7C54 /* SelectUserTableViewCell.swift */; };
 		EBA006B424D3567C00FB97F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA006B324D3567C00FB97F4 /* AppDelegate.swift */; };
 		EBA006B624D3567C00FB97F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA006B524D3567C00FB97F4 /* SceneDelegate.swift */; };
 		EBA006BB24D3567C00FB97F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA006B924D3567C00FB97F4 /* Main.storyboard */; };
@@ -28,6 +31,9 @@
 		EB60F95224F41CD1002E7C54 /* ChoreDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreDetailsViewController.swift; sourceTree = "<group>"; };
 		EB60F95424F41CE2002E7C54 /* AddChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChoreViewController.swift; sourceTree = "<group>"; };
 		EB60F95624FD7132002E7C54 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
+		EB60F95825092D4C002E7C54 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		EB60F95C250FCEB7002E7C54 /* SelectUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUsersTableViewController.swift; sourceTree = "<group>"; };
+		EB60F95E250FCFFE002E7C54 /* SelectUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectUserTableViewCell.swift; path = ChoreTracker/ViewControllers/SelectUserTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		EBA006B024D3567C00FB97F4 /* ChoreTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA006B324D3567C00FB97F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBA006B524D3567C00FB97F4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,7 +124,9 @@
 				EBB1684F24E1CA910040A1FC /* ChoreListCollectionViewController.swift */,
 				EB60F95224F41CD1002E7C54 /* ChoreDetailsViewController.swift */,
 				EB60F95424F41CE2002E7C54 /* AddChoreViewController.swift */,
+				EB60F95825092D4C002E7C54 /* UsersTableViewController.swift */,
 				EB60F95624FD7132002E7C54 /* NewUserViewController.swift */,
+				EB60F95C250FCEB7002E7C54 /* SelectUsersTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -126,6 +134,7 @@
 		EBB1685324E30EC20040A1FC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EB60F95E250FCFFE002E7C54 /* SelectUserTableViewCell.swift */,
 				EBB1685424E30F360040A1FC /* ChoreCollectionViewCell.swift */,
 			);
 			path = Views;
@@ -204,12 +213,15 @@
 			files = (
 				EB60F95524F41CE2002E7C54 /* AddChoreViewController.swift in Sources */,
 				EBB1685024E1CA910040A1FC /* ChoreListCollectionViewController.swift in Sources */,
+				EB60F95925092D4C002E7C54 /* UsersTableViewController.swift in Sources */,
 				EBA006CD24D3591000FB97F4 /* User.swift in Sources */,
 				EB60F95124F412CE002E7C54 /* UserController.swift in Sources */,
 				EBA006CB24D3582F00FB97F4 /* Chore.swift in Sources */,
 				EBB1684D24E1BA960040A1FC /* ChoreController.swift in Sources */,
 				EBB1685524E30F360040A1FC /* ChoreCollectionViewCell.swift in Sources */,
 				EBA006B424D3567C00FB97F4 /* AppDelegate.swift in Sources */,
+				EB60F95D250FCEB7002E7C54 /* SelectUsersTableViewController.swift in Sources */,
+				EB60F95F250FCFFE002E7C54 /* SelectUserTableViewCell.swift in Sources */,
 				EB60F95724FD7132002E7C54 /* NewUserViewController.swift in Sources */,
 				EB60F95324F41CD1002E7C54 /* ChoreDetailsViewController.swift in Sources */,
 				EBA006B624D3567C00FB97F4 /* SceneDelegate.swift in Sources */,
@@ -226,6 +238,7 @@
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
+			wrapsLines = 1;
 		};
 		EBA006BE24D3567E00FB97F4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;

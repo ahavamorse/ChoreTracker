@@ -9,8 +9,11 @@
 import UIKit
 
 class ChoreListCollectionViewController: UICollectionViewController {
-
     
+    // TODO: Split chores into families (with passwords?) - current solution: save locally (can load from api if none locally)
+    
+    // TODO: Be able to delete chores
+
     let choreController = ChoreController()
     let userController = UserController()
     
@@ -18,12 +21,20 @@ class ChoreListCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         // Register cell classes
-        self.collectionView!.register(ChoreCollectionViewCell.self, forCellWithReuseIdentifier: "ChoreCell")
-
-        choreController.addChore(newChore: Chore(name: "Take out trash", users: userController.users, frequency: "", instructions: ""))
-        choreController.addChore(newChore: Chore(name: "Put away and load dishwasher", users: userController.users, frequency: "", instructions: ""))
+//        self.collectionView!.register(ChoreCollectionViewCell.self, forCellWithReuseIdentifier: "ChoreCell")
+        
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        choreController.getChores { (error) in
+            if let error = error {
+                NSLog("Error: \(error)")
+            }
+        }
+        collectionView.reloadData()
+    }
     
     // MARK: - Navigation
 
@@ -32,24 +43,26 @@ class ChoreListCollectionViewController: UICollectionViewController {
         
         if let destination = segue.destination as? ChoreDetailsViewController,
             let indexPath: IndexPath = collectionView.indexPathsForSelectedItems?[0] {
-            destination.chore = choreController.chores[indexPath.row]
-            destination.nextUser = choreController.chores[indexPath.row].nextUser
+            
+            destination.choreIndex = indexPath.row
             destination.choreController = choreController
             destination.userController = userController
             
         } else if let destination = segue.destination as? AddChoreViewController {
             destination.choreController = choreController
             destination.userController = userController
+            
+        } else if let destination = segue.destination as? UsersTableViewController {
+            destination.userController = userController
+            destination.choreController = choreController
+            
         }
-        
         
     }
     
-
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -60,11 +73,12 @@ class ChoreListCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        // TODO: Allow sorting alphabetically or by next user etc.
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChoreCell", for: indexPath) as? ChoreCollectionViewCell else {
             fatalError("Cell is not a ChoreCollectionViewCell") }
         
         cell.chore = choreController.chores[indexPath.row]
-        cell.nextUser = choreController.chores[indexPath.row].nextUser
             
         return cell
     }
