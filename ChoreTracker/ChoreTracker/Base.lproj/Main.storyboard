@@ -283,17 +283,25 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Instructions: " translatesAutoresizingMaskIntoConstraints="NO" id="z2U-un-7gp">
-                                <rect key="frame" x="50" y="238" width="314" height="324"/>
+                                <rect key="frame" x="50" y="260" width="314" height="302"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYR-jO-dKS">
+                                <rect key="frame" x="163.5" y="230" width="87" height="30"/>
+                                <state key="normal" title="Select Users"/>
+                                <connections>
+                                    <segue destination="K8I-xl-qA6" kind="show" id="0rx-sx-9Xl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="z2U-un-7gp" firstAttribute="top" secondItem="aKe-Pv-gnk" secondAttribute="bottom" constant="16" id="Aj3-vR-hKz"/>
                             <constraint firstItem="z2U-un-7gp" firstAttribute="leading" secondItem="5A1-Os-g5P" secondAttribute="leading" constant="50" id="Brg-L1-cx8"/>
+                            <constraint firstItem="BYR-jO-dKS" firstAttribute="top" secondItem="aKe-Pv-gnk" secondAttribute="bottom" constant="8" id="F4F-pE-mc0"/>
+                            <constraint firstItem="BYR-jO-dKS" firstAttribute="centerX" secondItem="r1v-bk-z4V" secondAttribute="centerX" id="Ii6-1f-oZ4"/>
                             <constraint firstItem="5A1-Os-g5P" firstAttribute="bottom" secondItem="z2U-un-7gp" secondAttribute="bottom" constant="300" id="Q5J-jk-7eM"/>
                             <constraint firstItem="5A1-Os-g5P" firstAttribute="trailing" secondItem="z2U-un-7gp" secondAttribute="trailing" constant="50" id="ZpJ-to-pJM"/>
                             <constraint firstItem="aKe-Pv-gnk" firstAttribute="leading" secondItem="5A1-Os-g5P" secondAttribute="leading" constant="50" id="dFz-rG-AZa"/>
@@ -302,10 +310,12 @@
                             <constraint firstItem="5A1-Os-g5P" firstAttribute="trailing" secondItem="aKe-Pv-gnk" secondAttribute="trailing" constant="50" id="q9P-r8-4PM"/>
                             <constraint firstItem="7WU-W2-W8U" firstAttribute="leading" secondItem="5A1-Os-g5P" secondAttribute="leading" constant="50" id="uvT-9c-SzA"/>
                             <constraint firstItem="7WU-W2-W8U" firstAttribute="top" secondItem="5A1-Os-g5P" secondAttribute="top" constant="50" id="xJh-Kb-1XC"/>
+                            <constraint firstItem="z2U-un-7gp" firstAttribute="top" secondItem="BYR-jO-dKS" secondAttribute="bottom" id="yys-Lg-i8H"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5A1-Os-g5P"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add/Edit Chore" largeTitleDisplayMode="always" id="DOD-1l-dPn">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="7qO-Yp-nRI"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="nb9-xS-wAg">
                             <connections>
                                 <action selector="saveChore:" destination="WcL-jG-4sc" id="vI2-9q-ngg"/>
@@ -320,7 +330,70 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v15-ug-G5N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2357" y="359"/>
+            <point key="canvasLocation" x="2356.521739130435" y="358.92857142857139"/>
+        </scene>
+        <!--Users-->
+        <scene sceneID="IWM-Zz-Kqz">
+            <objects>
+                <tableViewController title="Users" modalPresentationStyle="overFullScreen" id="K8I-xl-qA6" customClass="SelectUsersTableViewController" customModule="ChoreTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YSL-Jp-gUj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="ADM-cj-mET" customClass="SelectUserTableViewCell" customModule="ChoreTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ADM-cj-mET" id="Q9Z-xZ-4oe">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceS-5z-mzs">
+                                            <rect key="frame" x="20" y="11" width="42" height="21.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s3b-Gn-7sJ">
+                                            <rect key="frame" x="345" y="0.0" width="61" height="43.5"/>
+                                            <state key="normal" title="Deselect"/>
+                                            <connections>
+                                                <action selector="selectUser:" destination="ADM-cj-mET" eventType="touchUpInside" id="t0I-51-Bd6"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="s3b-Gn-7sJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ceS-5z-mzs" secondAttribute="trailing" constant="8" id="3A1-Z0-cbp"/>
+                                        <constraint firstItem="s3b-Gn-7sJ" firstAttribute="top" secondItem="Q9Z-xZ-4oe" secondAttribute="top" id="9vr-aP-0N5"/>
+                                        <constraint firstAttribute="bottom" secondItem="s3b-Gn-7sJ" secondAttribute="bottom" id="Nnk-77-iLq"/>
+                                        <constraint firstItem="ceS-5z-mzs" firstAttribute="leading" secondItem="Q9Z-xZ-4oe" secondAttribute="leadingMargin" id="WdW-g4-WZ4"/>
+                                        <constraint firstItem="ceS-5z-mzs" firstAttribute="top" secondItem="Q9Z-xZ-4oe" secondAttribute="topMargin" id="ng7-56-fdB"/>
+                                        <constraint firstAttribute="trailing" secondItem="s3b-Gn-7sJ" secondAttribute="trailing" constant="8" id="pem-PW-Fab"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ceS-5z-mzs" secondAttribute="bottom" id="z3g-hf-98k"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="checkboxButton" destination="s3b-Gn-7sJ" id="IJp-a4-XO6"/>
+                                    <outlet property="userNameLabel" destination="ceS-5z-mzs" id="LBl-8R-vFM"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="K8I-xl-qA6" id="6wk-bL-kVl"/>
+                            <outlet property="delegate" destination="K8I-xl-qA6" id="4o3-td-hie"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select Users" largeTitleDisplayMode="always" id="oEd-fy-E7Z">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="YZ8-fi-4gS">
+                            <connections>
+                                <action selector="saveUsers:" destination="K8I-xl-qA6" id="K6E-OZ-3vq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oZv-Kd-x1Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3152" y="359"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bd9-CP-un3">

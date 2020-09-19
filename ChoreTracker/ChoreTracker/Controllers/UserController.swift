@@ -27,6 +27,11 @@ class UserController {
     init() {
         users = []
         loadFromPersistentStore()
+        getUsers { (error) in
+            if let error = error {
+                print(error)
+            }
+        }
     }
     
     func addUser(newUser: User) {

@@ -54,11 +54,13 @@ class ChoreDetailsViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let destination = segue.destination as? AddChoreViewController else { return }
+        if let destination = segue.destination as? AddChoreViewController {
+            destination.chore = chore
+            destination.userController = userController
+            destination.choreController = choreController
+            
+        }
         
-        destination.chore = chore
-        destination.userController = userController
-        destination.choreController = choreController
     }
 
     @IBAction func completeChore(_ sender: UIButton) {

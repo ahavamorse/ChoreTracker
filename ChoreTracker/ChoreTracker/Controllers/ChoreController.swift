@@ -24,14 +24,8 @@ class ChoreController {
         return choresUrl
     }
     
-    // Same to userController (erase getChores from viewController)
     init() {
         chores = []
-//        getChores { (error) in
-//            if let error = error {
-//                NSLog("Error: \(error)")
-//            }
-//        }
         
         loadFromPersistentStore()
     }

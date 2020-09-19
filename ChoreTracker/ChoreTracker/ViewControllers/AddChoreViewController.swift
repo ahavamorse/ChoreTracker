@@ -35,15 +35,18 @@ class AddChoreViewController: UIViewController {
         }
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? SelectUsersTableViewController {
+                   destination.userController = userController
+                   destination.chore = chore
+        }
+
     }
-    */
+    
 
     @IBAction func saveChore(_ sender: UIBarButtonItem) {
         
@@ -62,7 +65,7 @@ class AddChoreViewController: UIViewController {
             } else {
                 
                 let newChore = Chore(name: choreName, users: userController.users, frequency: frequency, instructions: instructions)
-                // TODO: Which users will do this chore
+                // TODO: Which users will do this chore NOW?
                 choreController.addChore(newChore: newChore)
             }
         }

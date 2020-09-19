@@ -10,7 +10,9 @@ import UIKit
 
 class ChoreListCollectionViewController: UICollectionViewController {
     
-    // TODO: Split chores into families (with passwords?) URGENT - current solution: save locally (can load from api if none locally)
+    // TODO: Split chores into families (with passwords?) - current solution: save locally (can load from api if none locally)
+    
+    // TODO: Be able to delete chores
 
     let choreController = ChoreController()
     let userController = UserController()
@@ -49,10 +51,13 @@ class ChoreListCollectionViewController: UICollectionViewController {
         } else if let destination = segue.destination as? AddChoreViewController {
             destination.choreController = choreController
             destination.userController = userController
+            
         } else if let destination = segue.destination as? UsersTableViewController {
             destination.userController = userController
             destination.choreController = choreController
+            
         }
+        
     }
     
     // MARK: UICollectionViewDataSource

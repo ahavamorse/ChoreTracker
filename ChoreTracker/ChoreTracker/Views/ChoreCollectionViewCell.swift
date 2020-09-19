@@ -24,5 +24,7 @@ class ChoreCollectionViewCell: UICollectionViewCell {
         if let chore = chore {
             choreNameLabel?.text = chore.name
             nextUserLabel?.text = "Next User: \(chore.nextUser.name)"
-        }    }
+        }
+        
+    }
 }
