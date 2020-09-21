@@ -30,12 +30,12 @@ class ChoreListCollectionViewController: UICollectionViewController {
             
             self.present(alertController, animated: true, completion: nil)
             
+
+            func nothing() {
+                return
+            }
+
         }
-        
-        func nothing() {
-            return
-        }
-        
         // Register cell classes
 //        self.collectionView!.register(ChoreCollectionViewCell.self, forCellWithReuseIdentifier: "ChoreCell")
         
