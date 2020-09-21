@@ -68,7 +68,7 @@
                     <navigationItem key="navigationItem" title="Chores" largeTitleDisplayMode="always" id="S1v-Ve-eVy">
                         <barButtonItem key="leftBarButtonItem" title="Users" id="UHg-9Q-Ghk">
                             <connections>
-                                <segue destination="Nkq-Uf-LDq" kind="show" id="BY8-cP-ytp"/>
+                                <segue destination="Nkq-Uf-LDq" kind="show" identifier="ViewUserSegue" id="BY8-cP-ytp"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3c4-td-nIN">

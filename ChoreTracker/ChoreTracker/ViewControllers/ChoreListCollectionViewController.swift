@@ -10,15 +10,31 @@ import UIKit
 
 class ChoreListCollectionViewController: UICollectionViewController {
     
-    // TODO: Split chores into families (with passwords?) - current solution: save locally (can load from api if none locally)
-    
-    // TODO: Be able to delete chores
+    // TODO: Split chores into families (with passwords?)
 
     let choreController = ChoreController()
     let userController = UserController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if userController.users.count == 0 {
+            performSegue(withIdentifier: "ViewUserSegue", sender: self)
+            
+            let alertController = UIAlertController(title: "No Users", message: "Please add users before adding chores", preferredStyle: .alert)
+            
+            let alertAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
+                nothing()
+            }
+            alertController.addAction(alertAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+        }
+        
+        func nothing() {
+            return
+        }
         
         // Register cell classes
 //        self.collectionView!.register(ChoreCollectionViewCell.self, forCellWithReuseIdentifier: "ChoreCell")

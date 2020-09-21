@@ -78,6 +78,7 @@ class ChoreController {
     }
     
     func removeUser(user: User) {
+        guard chores.count > 0 else { return }
         for index in 0...chores.count - 1 {
             if let userIndex = chores[index].users.firstIndex(of: user) {
                 chores[index].users.remove(at: userIndex)
