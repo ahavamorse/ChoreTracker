@@ -68,7 +68,7 @@
                     <navigationItem key="navigationItem" title="Chores" largeTitleDisplayMode="always" id="S1v-Ve-eVy">
                         <barButtonItem key="leftBarButtonItem" title="Users" id="UHg-9Q-Ghk">
                             <connections>
-                                <segue destination="Nkq-Uf-LDq" kind="show" id="BY8-cP-ytp"/>
+                                <segue destination="Nkq-Uf-LDq" kind="show" identifier="ViewUserSegue" id="BY8-cP-ytp"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3c4-td-nIN">
@@ -178,13 +178,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next User: ----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFM-ZT-kbG">
-                                <rect key="frame" x="25" y="218.5" width="183" height="33.5"/>
+                                <rect key="frame" x="25" y="218" width="183" height="34"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Must be done: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSq-4I-ibV">
-                                <rect key="frame" x="25" y="272.5" width="178.5" height="33.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Should be done: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSq-4I-ibV">
+                                <rect key="frame" x="25" y="272" width="200" height="33.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="WcM-v7-bJP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -211,38 +214,56 @@
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Instructions: " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lht-T0-OpF">
-                                <rect key="frame" x="25" y="319.5" width="364" height="492.5"/>
+                                <rect key="frame" x="25" y="318" width="364" height="494"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Every morning, once during the day" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPg-UL-zG9">
-                                <rect key="frame" x="211.5" y="279" width="182.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every morning, once during the day" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPg-UL-zG9">
+                                <rect key="frame" x="246" y="278.5" width="148" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20.5" id="nLG-Z4-nqD"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mie-2F-99S">
+                                <rect key="frame" x="20" y="832" width="374" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <state key="normal" title="Delete Chore">
+                                    <color key="titleColor" red="1" green="0.22362487696930411" blue="0.071930429429926446" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteChore:" destination="oBV-KM-YT6" eventType="touchUpInside" id="0hP-Es-M41"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="wjd-Ts-fTM" secondAttribute="trailing" constant="25" id="0Qo-Fd-dAA"/>
-                            <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="OPg-UL-zG9" secondAttribute="trailing" constant="20" id="2AC-Zt-xkG"/>
                             <constraint firstItem="fFM-ZT-kbG" firstAttribute="leading" secondItem="dM9-BQ-lW8" secondAttribute="leading" constant="25" id="35h-Xy-8DD"/>
-                            <constraint firstItem="OPg-UL-zG9" firstAttribute="top" secondItem="wjd-Ts-fTM" secondAttribute="bottom" constant="8" id="8qi-au-Odd"/>
+                            <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="OPg-UL-zG9" secondAttribute="trailing" constant="20" id="3mk-oE-s7m"/>
+                            <constraint firstItem="Lht-T0-OpF" firstAttribute="top" secondItem="OPg-UL-zG9" secondAttribute="bottom" constant="19" id="CxV-F3-fPQ"/>
                             <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="Lht-T0-OpF" secondAttribute="trailing" constant="25" id="DwE-In-auV"/>
                             <constraint firstItem="wjd-Ts-fTM" firstAttribute="centerY" secondItem="fFM-ZT-kbG" secondAttribute="centerY" id="HNV-Ei-Ckd"/>
-                            <constraint firstItem="OPg-UL-zG9" firstAttribute="leading" secondItem="MSq-4I-ibV" secondAttribute="trailing" constant="8" id="JGT-jb-1hz"/>
+                            <constraint firstItem="MSq-4I-ibV" firstAttribute="leading" secondItem="fFM-ZT-kbG" secondAttribute="leading" id="IGj-ic-5US"/>
+                            <constraint firstItem="Lht-T0-OpF" firstAttribute="top" secondItem="MSq-4I-ibV" secondAttribute="bottom" constant="12.5" id="Iea-wQ-ly2"/>
+                            <constraint firstItem="Mie-2F-99S" firstAttribute="top" secondItem="Lht-T0-OpF" secondAttribute="bottom" constant="20" id="JVJ-rc-OTQ"/>
+                            <constraint firstItem="Mie-2F-99S" firstAttribute="leading" secondItem="dM9-BQ-lW8" secondAttribute="leading" constant="20" id="K3S-S5-k7F"/>
                             <constraint firstItem="dM9-BQ-lW8" firstAttribute="bottom" secondItem="Lht-T0-OpF" secondAttribute="bottom" constant="50" id="RUC-SW-kEd"/>
                             <constraint firstItem="Ssk-hJ-aZn" firstAttribute="top" secondItem="dM9-BQ-lW8" secondAttribute="top" constant="50" id="Rgo-af-i21"/>
+                            <constraint firstItem="OPg-UL-zG9" firstAttribute="centerY" secondItem="MSq-4I-ibV" secondAttribute="centerY" id="Sbb-xw-v3s"/>
+                            <constraint firstItem="OPg-UL-zG9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MSq-4I-ibV" secondAttribute="trailing" constant="20" id="aiO-kl-iOy"/>
                             <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="Ssk-hJ-aZn" secondAttribute="trailing" constant="20" id="b4K-Vx-77E"/>
-                            <constraint firstItem="OPg-UL-zG9" firstAttribute="centerY" secondItem="MSq-4I-ibV" secondAttribute="centerY" id="ds9-Xa-mZ3"/>
-                            <constraint firstItem="Lht-T0-OpF" firstAttribute="top" secondItem="OPg-UL-zG9" secondAttribute="bottom" constant="20" id="fYE-du-eRd"/>
+                            <constraint firstItem="MSq-4I-ibV" firstAttribute="top" secondItem="fFM-ZT-kbG" secondAttribute="bottom" constant="20" id="hZV-18-gKQ"/>
                             <constraint firstItem="wjd-Ts-fTM" firstAttribute="top" secondItem="Ssk-hJ-aZn" secondAttribute="bottom" constant="20" id="kFL-av-h00"/>
-                            <constraint firstItem="MSq-4I-ibV" firstAttribute="leading" secondItem="dM9-BQ-lW8" secondAttribute="leading" constant="25" id="oaJ-YM-hXC"/>
                             <constraint firstItem="Ssk-hJ-aZn" firstAttribute="leading" secondItem="dM9-BQ-lW8" secondAttribute="leading" constant="20" id="qx4-xR-Dql"/>
                             <constraint firstItem="Lht-T0-OpF" firstAttribute="leading" secondItem="dM9-BQ-lW8" secondAttribute="leading" constant="25" id="qxg-LA-GI6"/>
+                            <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="Mie-2F-99S" secondAttribute="trailing" constant="20" id="uzC-AR-ehi"/>
                             <constraint firstItem="wjd-Ts-fTM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fFM-ZT-kbG" secondAttribute="trailing" constant="8" id="xaE-BB-FQa"/>
+                            <constraint firstItem="OPg-UL-zG9" firstAttribute="top" secondItem="wjd-Ts-fTM" secondAttribute="bottom" constant="7.5" id="z5w-pE-cFg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dM9-BQ-lW8"/>
                     </view>
@@ -262,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21q-5g-gYr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1593" y="359"/>
+            <point key="canvasLocation" x="1592.753623188406" y="358.92857142857139"/>
         </scene>
         <!--Add/Edit Chore-->
         <scene sceneID="1f6-1K-p3B">
@@ -277,7 +298,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="When is it done?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aKe-Pv-gnk">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="When should this chore be done?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aKe-Pv-gnk">
                                 <rect key="frame" x="50" y="188" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
@@ -415,6 +436,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gQd-Yo-DBR"/>
+        <segue reference="cfF-V3-ymh"/>
     </inferredMetricsTieBreakers>
 </document>

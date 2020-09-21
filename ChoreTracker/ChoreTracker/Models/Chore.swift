@@ -23,8 +23,7 @@ struct Chore: Codable, Equatable {
     var users: [User]
     var nextUser: User {
         get {
-//            return users[0]
-            return User(name: "Ahava")
+            return users[0]
         }
     }
     

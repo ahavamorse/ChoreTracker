@@ -55,6 +55,22 @@ class UsersTableViewController: UITableViewController {
             if let userController = userController,
                 let choreController = choreController {
                 
+                guard userController.users.count > 1 else {
+                    let alertController = UIAlertController(title: "Last User", message: "You must have at least one user", preferredStyle: .alert)
+                    
+                    let alertAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
+                        nothing()
+                    }
+                    alertController.addAction(alertAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+
+                    func nothing() {
+                        return
+                    }
+                    return
+                }
+                
                 let user = userController.users[indexPath.row]
                 
                 userController.deleteUser(user: user)
