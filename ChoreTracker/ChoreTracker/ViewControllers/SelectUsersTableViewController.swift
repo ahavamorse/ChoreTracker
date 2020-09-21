@@ -10,7 +10,9 @@ import UIKit
 
 class SelectUsersTableViewController: UITableViewController {
 
+    var choreController: ChoreController?
     var userController: UserController?
+    var users: [User]?
     var chore: Chore?
     
     override func viewDidLoad() {
@@ -40,8 +42,8 @@ class SelectUsersTableViewController: UITableViewController {
         let user = userController.users[indexPath.row]
         
         // Configure the cell...
-        if let chore = chore {
-            cell.userIsSelected = chore.users.contains(user)
+        if let users = users {
+            cell.userIsSelected = users.contains(user)
         } else {
             cell.userIsSelected = false
         }
@@ -51,12 +53,22 @@ class SelectUsersTableViewController: UITableViewController {
     }
 
     @IBAction func saveUsers(_ sender: UIBarButtonItem) {
-        let users: [User] = []
+        var users: [User] = []
         
         for index in 0...tableView.numberOfRows(inSection: 0) - 1 {
-            if let cell = tableView.cellForRow(at: [0, index]) as? SelectUsersTableViewController {
+            if let cell = tableView.cellForRow(at: [0, index]) as? SelectUserTableViewCell {
                 
+                if cell.userIsSelected == true,
+                    let user = cell.user {
+                    users.append(user)
+                }
             }
+        }
+        // Get users to AddChoreViewController to add to chore
+        
+        navigationController?.popViewController(animated: true)
+        if let viewController = navigationController?.visibleViewController as? AddChoreViewController {
+            viewController.users = users
         }
     }
 }
