@@ -31,9 +31,12 @@ class SelectUserTableViewCell: UITableViewCell {
         }
 
         if userIsSelected == true {
-            checkboxButton.setTitle("Deselect", for: .normal)
+//            checkboxButton.setTitle("Deselect", for: .normal)
+            checkboxButton.setImage(UIImage(named: "checked"), for: .normal)
         } else {
-            checkboxButton.setTitle("Select", for: .normal)
+//            checkboxButton.setTitle("Select", for: .normal)
+            checkboxButton.setImage(UIImage(named: "unchecked"), for: .normal)
+
         }
     }
     

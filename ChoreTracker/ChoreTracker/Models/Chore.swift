@@ -23,7 +23,11 @@ struct Chore: Codable, Equatable {
     var users: [User]
     var nextUser: User {
         get {
-            return users[0]
+            if users.count > 0 {
+                return users[0]
+            } else {
+                return User(name: "No users")
+            }
         }
     }
     
