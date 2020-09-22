@@ -138,6 +138,9 @@
                                 <rect key="frame" x="50" y="138" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES" textContentType="name"/>
+                                <connections>
+                                    <action selector="saveUser:" destination="Xl9-o8-ny9" eventType="primaryActionTriggered" id="M88-6O-heB"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -213,7 +216,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Instructions: " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lht-T0-OpF">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" editable="NO" text="Instructions: " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lht-T0-OpF">
                                 <rect key="frame" x="25" y="318" width="364" height="494"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -230,7 +233,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mie-2F-99S">
-                                <rect key="frame" x="20" y="832" width="374" height="36"/>
+                                <rect key="frame" x="20" y="826" width="374" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <state key="normal" title="Delete Chore">
                                     <color key="titleColor" red="1" green="0.22362487696930411" blue="0.071930429429926446" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -246,12 +249,13 @@
                             <constraint firstItem="fFM-ZT-kbG" firstAttribute="leading" secondItem="dM9-BQ-lW8" secondAttribute="leading" constant="25" id="35h-Xy-8DD"/>
                             <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="OPg-UL-zG9" secondAttribute="trailing" constant="20" id="3mk-oE-s7m"/>
                             <constraint firstItem="Lht-T0-OpF" firstAttribute="top" secondItem="OPg-UL-zG9" secondAttribute="bottom" constant="19" id="CxV-F3-fPQ"/>
+                            <constraint firstItem="Mie-2F-99S" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Lht-T0-OpF" secondAttribute="bottom" constant="8" id="DSE-1W-LHH"/>
                             <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="Lht-T0-OpF" secondAttribute="trailing" constant="25" id="DwE-In-auV"/>
                             <constraint firstItem="wjd-Ts-fTM" firstAttribute="centerY" secondItem="fFM-ZT-kbG" secondAttribute="centerY" id="HNV-Ei-Ckd"/>
                             <constraint firstItem="MSq-4I-ibV" firstAttribute="leading" secondItem="fFM-ZT-kbG" secondAttribute="leading" id="IGj-ic-5US"/>
                             <constraint firstItem="Lht-T0-OpF" firstAttribute="top" secondItem="MSq-4I-ibV" secondAttribute="bottom" constant="12.5" id="Iea-wQ-ly2"/>
-                            <constraint firstItem="Mie-2F-99S" firstAttribute="top" secondItem="Lht-T0-OpF" secondAttribute="bottom" constant="20" id="JVJ-rc-OTQ"/>
                             <constraint firstItem="Mie-2F-99S" firstAttribute="leading" secondItem="dM9-BQ-lW8" secondAttribute="leading" constant="20" id="K3S-S5-k7F"/>
+                            <constraint firstItem="Mie-2F-99S" firstAttribute="bottom" secondItem="dM9-BQ-lW8" secondAttribute="bottom" id="Ns2-ru-uab"/>
                             <constraint firstItem="dM9-BQ-lW8" firstAttribute="bottom" secondItem="Lht-T0-OpF" secondAttribute="bottom" constant="50" id="RUC-SW-kEd"/>
                             <constraint firstItem="Ssk-hJ-aZn" firstAttribute="top" secondItem="dM9-BQ-lW8" secondAttribute="top" constant="50" id="Rgo-af-i21"/>
                             <constraint firstItem="OPg-UL-zG9" firstAttribute="centerY" secondItem="MSq-4I-ibV" secondAttribute="centerY" id="Sbb-xw-v3s"/>
@@ -297,11 +301,17 @@
                                 <rect key="frame" x="50" y="138" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="choreNameDone:" destination="WcL-jG-4sc" eventType="primaryActionTriggered" id="OOu-d4-GCJ"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="When should this chore be done?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aKe-Pv-gnk">
                                 <rect key="frame" x="50" y="188" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="frequencyDone:" destination="WcL-jG-4sc" eventType="primaryActionTriggered" id="exn-th-lSa"/>
+                                </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Instructions:  " translatesAutoresizingMaskIntoConstraints="NO" id="z2U-un-7gp">
                                 <rect key="frame" x="50" y="260" width="314" height="302"/>

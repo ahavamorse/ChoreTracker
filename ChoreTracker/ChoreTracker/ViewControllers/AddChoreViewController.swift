@@ -25,6 +25,8 @@ class AddChoreViewController: UIViewController {
         super.viewDidLoad()
         
         users = chore?.users ?? userController?.users
+        
+        choreNameTextField.becomeFirstResponder()
 
         updateViews()
     }
@@ -59,6 +61,7 @@ class AddChoreViewController: UIViewController {
         
         if let choreController = choreController,
             let choreName = choreNameTextField.text,
+            choreName.isEmpty == false,
             let frequency = frequencyTextField.text,
             let instructions = instructionsTextView.text,
             let users = users {
@@ -77,5 +80,15 @@ class AddChoreViewController: UIViewController {
             }
         }
         navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func choreNameDone(_ sender: Any) {
+        choreNameTextField.resignFirstResponder()
+        frequencyTextField.becomeFirstResponder()
+    }
+    
+    @IBAction func frequencyDone(_ sender: Any) {
+        frequencyTextField.resignFirstResponder()
     }
 }
