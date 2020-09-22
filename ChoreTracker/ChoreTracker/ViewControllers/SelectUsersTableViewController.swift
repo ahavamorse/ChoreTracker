@@ -64,11 +64,30 @@ class SelectUsersTableViewController: UITableViewController {
                 }
             }
         }
-        // Get users to AddChoreViewController to add to chore
         
-        navigationController?.popViewController(animated: true)
-        if let viewController = navigationController?.visibleViewController as? AddChoreViewController {
-            viewController.users = users
+        if users.count > 0 {
+            
+            navigationController?.popViewController(animated: true)
+            if let viewController = navigationController?.visibleViewController as? AddChoreViewController {
+                viewController.users = users
+            }
+        } else {
+            // No users selected
+            
+            let alertController = UIAlertController(title: "No Users", message: "Each chore must have at least one user", preferredStyle: .alert)
+            
+            let alertAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
+                nothing()
+            }
+            alertController.addAction(alertAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+
+            func nothing() {
+                return
+            }
         }
+        
     }
 }
