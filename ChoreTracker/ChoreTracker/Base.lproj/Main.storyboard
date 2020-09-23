@@ -181,13 +181,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next User: ----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFM-ZT-kbG">
-                                <rect key="frame" x="25" y="218" width="183" height="34"/>
+                                <rect key="frame" x="25" y="212.5" width="183" height="33.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Should be done: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSq-4I-ibV">
-                                <rect key="frame" x="25" y="272" width="200" height="33.5"/>
+                                <rect key="frame" x="25" y="270.5" width="200" height="33.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="WcM-v7-bJP"/>
                                 </constraints>
@@ -195,21 +195,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wjd-Ts-fTM">
-                                <rect key="frame" x="304" y="199" width="85" height="72"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wjd-Ts-fTM">
+                                <rect key="frame" x="304" y="199" width="85" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezk-Nn-dhy">
-                                        <rect key="frame" x="0.0" y="0.0" width="85" height="36"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezk-Nn-dhy">
+                                        <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="AwB-m0-7vR"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <state key="normal" title="Complete"/>
                                         <connections>
                                             <action selector="completeChore:" destination="oBV-KM-YT6" eventType="touchUpInside" id="LrJ-c4-pWX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rze-45-fwl">
-                                        <rect key="frame" x="23" y="36" width="39" height="36"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rze-45-fwl">
+                                        <rect key="frame" x="0.5" y="30" width="84" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="tWa-Ni-yjj"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                        <state key="normal" title="Skip"/>
+                                        <state key="normal" title="Skip User"/>
                                         <connections>
                                             <action selector="skipUser:" destination="oBV-KM-YT6" eventType="touchUpInside" id="rdB-2M-6DZ"/>
                                         </connections>
@@ -217,17 +223,14 @@
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" editable="NO" text="Instructions: " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lht-T0-OpF">
-                                <rect key="frame" x="25" y="318" width="364" height="494"/>
+                                <rect key="frame" x="25" y="316.5" width="364" height="495.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every morning, once during the day" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPg-UL-zG9">
-                                <rect key="frame" x="246" y="278.5" width="148" height="20.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20.5" id="nLG-Z4-nqD"/>
-                                </constraints>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Every morning, once during the day" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPg-UL-zG9">
+                                <rect key="frame" x="246" y="266.5" width="148" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -248,7 +251,6 @@
                             <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="wjd-Ts-fTM" secondAttribute="trailing" constant="25" id="0Qo-Fd-dAA"/>
                             <constraint firstItem="fFM-ZT-kbG" firstAttribute="leading" secondItem="dM9-BQ-lW8" secondAttribute="leading" constant="25" id="35h-Xy-8DD"/>
                             <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="OPg-UL-zG9" secondAttribute="trailing" constant="20" id="3mk-oE-s7m"/>
-                            <constraint firstItem="Lht-T0-OpF" firstAttribute="top" secondItem="OPg-UL-zG9" secondAttribute="bottom" constant="19" id="CxV-F3-fPQ"/>
                             <constraint firstItem="Mie-2F-99S" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Lht-T0-OpF" secondAttribute="bottom" constant="8" id="DSE-1W-LHH"/>
                             <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="Lht-T0-OpF" secondAttribute="trailing" constant="25" id="DwE-In-auV"/>
                             <constraint firstItem="wjd-Ts-fTM" firstAttribute="centerY" secondItem="fFM-ZT-kbG" secondAttribute="centerY" id="HNV-Ei-Ckd"/>
@@ -261,7 +263,6 @@
                             <constraint firstItem="OPg-UL-zG9" firstAttribute="centerY" secondItem="MSq-4I-ibV" secondAttribute="centerY" id="Sbb-xw-v3s"/>
                             <constraint firstItem="OPg-UL-zG9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MSq-4I-ibV" secondAttribute="trailing" constant="20" id="aiO-kl-iOy"/>
                             <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="Ssk-hJ-aZn" secondAttribute="trailing" constant="20" id="b4K-Vx-77E"/>
-                            <constraint firstItem="MSq-4I-ibV" firstAttribute="top" secondItem="fFM-ZT-kbG" secondAttribute="bottom" constant="20" id="hZV-18-gKQ"/>
                             <constraint firstItem="wjd-Ts-fTM" firstAttribute="top" secondItem="Ssk-hJ-aZn" secondAttribute="bottom" constant="20" id="kFL-av-h00"/>
                             <constraint firstItem="Ssk-hJ-aZn" firstAttribute="leading" secondItem="dM9-BQ-lW8" secondAttribute="leading" constant="20" id="qx4-xR-Dql"/>
                             <constraint firstItem="Lht-T0-OpF" firstAttribute="leading" secondItem="dM9-BQ-lW8" secondAttribute="leading" constant="25" id="qxg-LA-GI6"/>
@@ -300,7 +301,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Chore:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7WU-W2-W8U">
                                 <rect key="frame" x="50" y="138" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="choreNameDone:" destination="WcL-jG-4sc" eventType="primaryActionTriggered" id="OOu-d4-GCJ"/>
                                 </connections>
