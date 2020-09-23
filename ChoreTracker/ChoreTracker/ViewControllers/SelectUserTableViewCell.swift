@@ -25,15 +25,15 @@ class SelectUserTableViewCell: UITableViewCell {
     }
     
     func updateViews() {
-        // TODO: use images instead of words (checkbox)
         if let user = user {
             userNameLabel.text = user.name
         }
 
         if userIsSelected == true {
-            checkboxButton.setTitle("Deselect", for: .normal)
+            checkboxButton.setImage(UIImage(named: "checked"), for: .normal)
         } else {
-            checkboxButton.setTitle("Select", for: .normal)
+            checkboxButton.setImage(UIImage(named: "unchecked"), for: .normal)
+
         }
     }
     
