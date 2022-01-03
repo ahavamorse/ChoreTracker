@@ -232,7 +232,7 @@
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" editable="NO" text="Instructions: " textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lht-T0-OpF">
-                                <rect key="frame" x="25" y="278" width="369" height="534"/>
+                                <rect key="frame" x="25" y="278" width="369" height="536"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
@@ -245,7 +245,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mie-2F-99S">
-                                <rect key="frame" x="20" y="829" width="374" height="33"/>
+                                <rect key="frame" x="20" y="804" width="374" height="33"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <state key="normal" title="Delete Chore">
                                     <color key="titleColor" red="1" green="0.22362487696930411" blue="0.071930429429926446" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -261,13 +261,12 @@
                             <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="wjd-Ts-fTM" secondAttribute="trailing" constant="25" id="0Qo-Fd-dAA"/>
                             <constraint firstItem="fFM-ZT-kbG" firstAttribute="leading" secondItem="dM9-BQ-lW8" secondAttribute="leading" constant="25" id="35h-Xy-8DD"/>
                             <constraint firstItem="dM9-BQ-lW8" firstAttribute="trailing" secondItem="OPg-UL-zG9" secondAttribute="trailing" constant="20" id="3mk-oE-s7m"/>
-                            <constraint firstItem="Mie-2F-99S" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Lht-T0-OpF" secondAttribute="bottom" constant="8" id="DSE-1W-LHH"/>
+                            <constraint firstItem="Mie-2F-99S" firstAttribute="top" secondItem="Lht-T0-OpF" secondAttribute="bottom" constant="-10" id="DSE-1W-LHH"/>
                             <constraint firstItem="wjd-Ts-fTM" firstAttribute="centerY" secondItem="fFM-ZT-kbG" secondAttribute="centerY" id="HNV-Ei-Ckd"/>
                             <constraint firstItem="MSq-4I-ibV" firstAttribute="leading" secondItem="fFM-ZT-kbG" secondAttribute="leading" id="IGj-ic-5US"/>
                             <constraint firstItem="Lht-T0-OpF" firstAttribute="top" secondItem="MSq-4I-ibV" secondAttribute="bottom" constant="12.5" id="Iea-wQ-ly2"/>
                             <constraint firstItem="Mie-2F-99S" firstAttribute="leading" secondItem="dM9-BQ-lW8" secondAttribute="leading" constant="20" id="K3S-S5-k7F"/>
-                            <constraint firstItem="Mie-2F-99S" firstAttribute="bottom" secondItem="dM9-BQ-lW8" secondAttribute="bottom" id="Ns2-ru-uab"/>
-                            <constraint firstItem="dM9-BQ-lW8" firstAttribute="bottom" secondItem="Lht-T0-OpF" secondAttribute="bottom" constant="50" id="RUC-SW-kEd"/>
+                            <constraint firstItem="Mie-2F-99S" firstAttribute="bottom" secondItem="dM9-BQ-lW8" secondAttribute="bottom" constant="-25" id="Ns2-ru-uab"/>
                             <constraint firstItem="Ssk-hJ-aZn" firstAttribute="top" secondItem="dM9-BQ-lW8" secondAttribute="top" constant="20" id="Rgo-af-i21"/>
                             <constraint firstItem="OPg-UL-zG9" firstAttribute="centerY" secondItem="MSq-4I-ibV" secondAttribute="centerY" id="Sbb-xw-v3s"/>
                             <constraint firstItem="OPg-UL-zG9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MSq-4I-ibV" secondAttribute="trailing" constant="20" id="aiO-kl-iOy"/>
