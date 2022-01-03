@@ -16,7 +16,6 @@ class NewUserViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         UserNameTextField.becomeFirstResponder()
     }
     
@@ -25,6 +24,16 @@ class NewUserViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func addUser(_ sender: Any) {
+        if let username = UserNameTextField.text,
+           username.isEmpty {
+            let alertController = UIAlertController(title: "Empty Name", message: "Please enter a name for this new user.", preferredStyle: .alert)
+            
+            let alertAction = UIAlertAction(title: "Ok", style: .default)
+            alertController.addAction(alertAction)
+            
+            self.present(alertController, animated: true)
+            return
+        }
         
         if let userController = userController,
             let name = UserNameTextField.text {
@@ -51,7 +60,6 @@ class NewUserViewController: UIViewController, UITextFieldDelegate {
                 userController.addUser(newUser: newUser)
                 navigationController?.popViewController(animated: true)
             }
-            
         }
     }
 }

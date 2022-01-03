@@ -13,18 +13,28 @@ class UsersTableViewController: UITableViewController {
     var userController: UserController?
     var choreController: ChoreController?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         tableView.reloadData()
+        
+        if let users = userController?.users, users.isEmpty {
+            addFirstUser()
+        }
+    }
+    
+    func addFirstUser() {
+        let alertController = UIAlertController(title: "No Users", message: "Please add users before adding chores", preferredStyle: .alert)
+        
+        let alertAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            self.performSegue(withIdentifier: "AddUserSegue", sender: self)
+        }
+        alertController.addAction(alertAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -36,20 +46,18 @@ class UsersTableViewController: UITableViewController {
         return 0
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let userController = userController else {
             fatalError("no userController")
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 
+        cell.textLabel?.font = .preferredFont(forTextStyle: .title2)
         cell.textLabel?.text = userController.users[indexPath.row].name
 
         return cell
     }
 
-    
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if let userController = userController,
@@ -82,17 +90,12 @@ class UsersTableViewController: UITableViewController {
     }
 
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // TODO: View details about users such as what chores are theirs next and how many times they've completed each chore
+        // Stretch goal: show details on users such as what chores they do and when they last did them
         
         if let destination = segue.destination as? NewUserViewController {
             
             destination.userController = userController
-            
         }
     }
-    
-
 }
