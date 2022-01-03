@@ -33,7 +33,6 @@ class SelectUserTableViewCell: UITableViewCell {
             checkboxButton.setImage(UIImage(named: "checked"), for: .normal)
         } else {
             checkboxButton.setImage(UIImage(named: "unchecked"), for: .normal)
-
         }
     }
     

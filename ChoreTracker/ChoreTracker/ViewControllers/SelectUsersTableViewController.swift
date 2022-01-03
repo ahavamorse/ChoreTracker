@@ -17,14 +17,12 @@ class SelectUsersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.reloadData()
     }
-
+    
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // TODO: Split users into two groups: secected and not selected
+        // Stretch goal: sort users by selected and not selected
         return 1
     }
 
@@ -33,7 +31,6 @@ class SelectUsersTableViewController: UITableViewController {
         return userController.users.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? SelectUserTableViewCell else { fatalError("Cell is not a SelectUserTableViewCell") }
 
@@ -41,7 +38,6 @@ class SelectUsersTableViewController: UITableViewController {
         
         let user = userController.users[indexPath.row]
         
-        // Configure the cell...
         if let users = users {
             cell.userIsSelected = users.contains(user)
         } else {
@@ -88,6 +84,5 @@ class SelectUsersTableViewController: UITableViewController {
                 return
             }
         }
-        
     }
 }

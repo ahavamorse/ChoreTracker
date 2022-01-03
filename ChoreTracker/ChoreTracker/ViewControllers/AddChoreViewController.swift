@@ -17,7 +17,6 @@ class AddChoreViewController: UIViewController {
     var userController: UserController?
     var choreController: ChoreController?
     var chore: Chore?
-    
     var users: [User]?
     
     
@@ -44,8 +43,6 @@ class AddChoreViewController: UIViewController {
 
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? SelectUsersTableViewController {
             destination.choreController = choreController
@@ -53,16 +50,15 @@ class AddChoreViewController: UIViewController {
             destination.users = users
             destination.chore = chore
         }
-
     }
     
 
     @IBAction func saveChore(_ sender: UIBarButtonItem) {
-        
         if let choreController = choreController,
             let choreName = choreNameTextField.text,
             choreName.isEmpty == false,
             let frequency = frequencyTextField.text,
+           frequency.isEmpty == false,
             let instructions = instructionsTextView.text,
             let users = users {
             
@@ -78,8 +74,14 @@ class AddChoreViewController: UIViewController {
                 // TODO: Keep old order of users
                 choreController.addChore(newChore: newChore)
             }
+            navigationController?.popViewController(animated: true)
+        } else {
+            let alertController = UIAlertController(title: "Missing Information", message: "Please finish filling out the chore information before saving.", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+            
+            present(alertController, animated: true, completion: nil)
         }
-        navigationController?.popViewController(animated: true)
     }
     
     

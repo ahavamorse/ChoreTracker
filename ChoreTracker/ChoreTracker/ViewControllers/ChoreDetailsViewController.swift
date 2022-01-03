@@ -28,15 +28,8 @@ class ChoreDetailsViewController: UIViewController {
     var choreController: ChoreController?
     var userController: UserController?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        updateViews()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         updateViews()
     }
     
@@ -45,22 +38,18 @@ class ChoreDetailsViewController: UIViewController {
             choreNameLabel.text = chore.name
             nextUserLabel.text = "Next User:  \(chore.nextUser.name)"
             frequencyLabel.text = chore.frequency
-            instructionsTextView.text = chore.instructions
+            instructionsTextView.text = chore.instructions == "Instructions:  " ? "Instructions:  None" : chore.instructions
         }
     }
 
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let destination = segue.destination as? AddChoreViewController {
             destination.chore = chore
             destination.userController = userController
             destination.choreController = choreController
-            
         }
-        
     }
 
     @IBAction func completeChore(_ sender: UIButton) {
