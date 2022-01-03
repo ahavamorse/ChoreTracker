@@ -11,12 +11,15 @@ import UIKit
 
 class ChoreController {
     
-    var chores: [Chore]
+    var chores: [Chore] = []
     let baseURL: URL = URL(string: "https://choretracker-c5d22.firebaseio.com/")!
     let uuid = UIDevice.current.identifierForVendor?.uuidString
     
+    var alphabetizedChores: [Chore] {
+        return chores.sorted { $0.name < $1.name }
+    }
+    
     var choreListUrl: URL? {
-        
         let fileManager = FileManager.default
         let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
         let choresUrl = documentsDir?.appendingPathComponent("ChoreList.plist")
@@ -24,30 +27,28 @@ class ChoreController {
         return choresUrl
     }
     
-    init() {
-        chores = []
-        
-        loadFromPersistentStore()
-    }
-    
     func completeChore(chore: Chore) {
         if let choreIndex = chores.firstIndex(of: chore) {
             let user = chore.nextUser
             chores[choreIndex].users.remove(at: 0)
-            chores[choreIndex].users.append(user)
-            
+            if !user.isCatchUpUser {
+                chores[choreIndex].users.append(user)
+            }
             putChores()
             saveToPersistentStore()
         }
     }
     
     func skipUser(chore: Chore) {
-        // TODO: Come back to user
         if let choreIndex = chores.firstIndex(of: chore) {
             let user = chore.nextUser
             chores[choreIndex].users.remove(at: 0)
-            chores[choreIndex].users.append(user)
-            
+            var catchUpUser = user
+            catchUpUser.isCatchUpUser = true
+            chores[choreIndex].users.insert(catchUpUser, at: 1)
+            if !user.isCatchUpUser {
+                chores[choreIndex].users.append(user)
+            }
             putChores()
             saveToPersistentStore()
         }
@@ -88,9 +89,26 @@ class ChoreController {
         saveToPersistentStore()
     }
     
-    func getChores(completion: @escaping (Error?) -> ()) {
+    func getChores(completion: @escaping (([Chore]) -> ())) {
+        fetchChores { result in
+            switch result {
+            case .success(let chores):
+                if chores.isEmpty {
+                    self.loadFromPersistentStore()
+                    completion(self.chores)
+                } else {
+                    completion(chores)
+                }
+            case .failure(_):
+                self.loadFromPersistentStore()
+                completion(self.chores)
+            }
+        }
+    }
+    
+    func fetchChores(completion: @escaping (Result<[Chore], Error>) -> ()) {
         guard let uuid = uuid else {
-            completion(NSError(domain: "No uuid", code: 0, userInfo: nil))
+            completion(.failure((NSError(domain: "No uuid", code: 0, userInfo: nil))))
             return
         }
         
@@ -104,18 +122,18 @@ class ChoreController {
             
             if let error = error {
                 NSLog("Error receiving chore data: \(error)")
-                completion(error)
+                completion(.failure(error))
                 return
             }
             
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 200 {
-                completion(NSError(domain: "", code: response.statusCode, userInfo: nil))
+                completion(.failure(NSError(domain: "", code: response.statusCode, userInfo: nil)))
                 return
             }
             
             guard let data = data else {
-                completion(NSError(domain: "Bad Data", code: 0, userInfo: nil))
+                completion(.failure(NSError(domain: "Bad Data", code: 0, userInfo: nil)))
                 return
             }
             
@@ -129,10 +147,10 @@ class ChoreController {
                     self.chores.append(chore)
                 }
                 
-                completion(nil)
+                completion(.success(chores))
             } catch {
                 NSLog("Error decoding chore objects: \(error)")
-                completion(error)
+                completion(.failure(error))
                 return
             }
         }.resume()
@@ -201,11 +219,6 @@ class ChoreController {
             print("recovered chores")
         } catch {
             print("Couldn't load chores: \(error)")
-            getChores { (error) in
-                if let error = error {
-                    NSLog("Error: \(error)")
-                }
-            }
         }
     }
 }

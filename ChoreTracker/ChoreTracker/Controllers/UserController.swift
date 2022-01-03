@@ -11,7 +11,7 @@ import UIKit
 
 class UserController {
     
-    var users: [User]
+    var users: [User] = []
     let baseURL: URL = URL(string: "https://choretracker-c5d22.firebaseio.com/")!
     let uuid = UIDevice.current.identifierForVendor?.uuidString
     
@@ -22,16 +22,6 @@ class UserController {
         let usersUrl = documentsDir?.appendingPathComponent("UserList.plist")
         
         return usersUrl
-    }
-    
-    init() {
-        users = []
-        loadFromPersistentStore()
-        getUsers { (error) in
-            if let error = error {
-                print(error)
-            }
-        }
     }
     
     func addUser(newUser: User) {
@@ -50,9 +40,26 @@ class UserController {
         saveToPersistentStore()
     }
     
-    func getUsers(completion: @escaping (Error?) -> ()) {
+    func getUsers(completion: @escaping (([User]) -> ())) {
+        fetchUsers { result in
+            switch result {
+            case .success(let users):
+                if users.isEmpty {
+                    self.loadFromPersistentStore()
+                    completion(self.users)
+                } else {
+                    completion(users)
+                }
+            case .failure(_):
+                self.loadFromPersistentStore()
+                completion(self.users)
+            }
+        }
+    }
+    
+    func fetchUsers(completion: @escaping (Result<[User], Error>) -> ()) {
         guard let uuid = uuid else {
-            completion(NSError(domain: "No uuid", code: 0, userInfo: nil))
+            completion(.failure(NSError(domain: "No uuid", code: 0, userInfo: nil)))
             return
         }
         
@@ -67,18 +74,18 @@ class UserController {
                 
                 if let error = error {
                     NSLog("Error receiving user data: \(error)")
-                    completion(error)
+                    completion(.failure(error))
                     return
                 }
                 
                 if let response = response as? HTTPURLResponse,
                     response.statusCode != 200 {
-                    completion(NSError(domain: "", code: response.statusCode, userInfo: nil))
+                    completion(.failure(NSError(domain: "", code: response.statusCode, userInfo: nil)))
                     return
                 }
                 
                 guard let data = data else {
-                    completion(NSError(domain: "Bad Data", code: 0, userInfo: nil))
+                    completion(.failure(NSError(domain: "Bad Data", code: 0, userInfo: nil)))
                     return
                 }
                 
@@ -92,10 +99,10 @@ class UserController {
                         self.users.append(user)
                     }
                     
-                    completion(nil)
+                    completion(.success(users))
                 } catch {
                     NSLog("Error decoding user objects: \(error)")
-                    completion(error)
+                    completion(.failure(error))
                     return
                 }
             }.resume()
@@ -164,11 +171,6 @@ class UserController {
             print("recovered users")
         } catch {
             print("Couldn't load users: \(error)")
-            getUsers { (error) in
-                if let error = error {
-                    NSLog("Error: \(error)")
-                }
-            }
         }
     }
 }
