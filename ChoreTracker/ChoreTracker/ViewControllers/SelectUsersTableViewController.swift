@@ -44,7 +44,6 @@ class SelectUsersTableViewController: UITableViewController {
             cell.userIsSelected = false
         }
         cell.user = user
-
         return cell
     }
 
@@ -52,37 +51,26 @@ class SelectUsersTableViewController: UITableViewController {
         var users: [User] = []
         
         for index in 0...tableView.numberOfRows(inSection: 0) - 1 {
-            if let cell = tableView.cellForRow(at: [0, index]) as? SelectUserTableViewCell {
-                
-                if cell.userIsSelected == true,
-                    let user = cell.user {
-                    users.append(user)
-                }
+            if let cell = tableView.cellForRow(at: [0, index]) as? SelectUserTableViewCell,
+               cell.userIsSelected == true,
+               let user = cell.user {
+                users.append(user)
             }
         }
         
         if users.count > 0 {
-            
             navigationController?.popViewController(animated: true)
             if let viewController = navigationController?.visibleViewController as? AddChoreViewController {
                 viewController.users = users
             }
         } else {
             // No users selected
-            
             let alertController = UIAlertController(title: "No Users", message: "Each chore must have at least one user", preferredStyle: .alert)
             
-            let alertAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
-                nothing()
-            }
+            let alertAction = UIAlertAction(title: "Ok", style: .default)
             alertController.addAction(alertAction)
             
             self.present(alertController, animated: true, completion: nil)
-            
-
-            func nothing() {
-                return
-            }
         }
     }
 }

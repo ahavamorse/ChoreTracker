@@ -16,7 +16,6 @@ class UserController {
     let uuid = UIDevice.current.identifierForVendor?.uuidString
     
     var userListUrl: URL? {
-        
         let fileManager = FileManager.default
         let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
         let usersUrl = documentsDir?.appendingPathComponent("UserList.plist")
@@ -26,7 +25,6 @@ class UserController {
     
     func addUser(newUser: User) {
         users.append(newUser)
-        
         putUsers()
         saveToPersistentStore()
     }
@@ -35,7 +33,6 @@ class UserController {
         if let index = users.firstIndex(of: user) {
             users.remove(at: index)
         }
-        
         putUsers()
         saveToPersistentStore()
     }
@@ -89,7 +86,7 @@ class UserController {
                     return
                 }
                 
-    //            print(String(data: data, encoding: .utf8))
+//                print(String(data: data, encoding: .utf8))
                 
                 let decoder = JSONDecoder()
                 do {
@@ -147,7 +144,6 @@ class UserController {
     
     func saveToPersistentStore() {
         do {
-            
             let encoder = PropertyListEncoder()
             let usersData = try encoder.encode(users)
             guard let userListUrl = userListUrl else { return }

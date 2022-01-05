@@ -44,18 +44,10 @@ class NewUserViewController: UIViewController, UITextFieldDelegate {
                 
                 let alertController = UIAlertController(title: "Same Name", message: "A user with this name already exists. Please choose a different name.", preferredStyle: .alert)
                 
-                let alertAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
-                    nothing()
-                }
+                let alertAction = UIAlertAction(title: "Ok", style: .default)
                 alertController.addAction(alertAction)
                 
-                self.present(alertController, animated: true, completion: nil)
-                
-
-                func nothing() {
-                    return
-                }
-                
+                self.present(alertController, animated: true)
             } else {
                 userController.addUser(newUser: newUser)
                 navigationController?.popViewController(animated: true)

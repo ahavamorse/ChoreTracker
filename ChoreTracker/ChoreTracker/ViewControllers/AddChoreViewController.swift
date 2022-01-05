@@ -22,11 +22,8 @@ class AddChoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         users = chore?.users ?? userController?.users
-        
         choreNameTextField.becomeFirstResponder()
-
         updateViews()
     }
 
@@ -40,7 +37,6 @@ class AddChoreViewController: UIViewController {
             navigationItem.title = "Add Chore"
         }
     }
-
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,7 +47,6 @@ class AddChoreViewController: UIViewController {
             destination.chore = chore
         }
     }
-    
 
     @IBAction func saveChore(_ sender: UIBarButtonItem) {
         if let choreController = choreController,
@@ -63,15 +58,12 @@ class AddChoreViewController: UIViewController {
             let users = users {
             
             if let oldChore = chore {
-                
                 let newChore = Chore(name: choreName, users: users, frequency: frequency, instructions: instructions)
                 
                 choreController.editChore(from: oldChore, into: newChore)
                 
             } else {
-                
                 let newChore = Chore(name: choreName, users: users, frequency: frequency, instructions: instructions)
-                // TODO: Keep old order of users
                 choreController.addChore(newChore: newChore)
             }
             navigationController?.popViewController(animated: true)

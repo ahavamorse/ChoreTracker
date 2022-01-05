@@ -71,7 +71,6 @@ class ChoreDetailsViewController: UIViewController {
     @IBAction func deleteChore(_ sender: UIButton) {
         if let chore = chore {
             choreController?.deleteChore(chore: chore)
-            
             navigationController?.popViewController(animated: true)
         }
     }

@@ -66,16 +66,10 @@ class UsersTableViewController: UITableViewController {
                 guard userController.users.count > 1 else {
                     let alertController = UIAlertController(title: "Last User", message: "You must have at least one user", preferredStyle: .alert)
                     
-                    let alertAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
-                        nothing()
-                    }
+                    let alertAction = UIAlertAction(title: "Ok", style: .default)
                     alertController.addAction(alertAction)
                     
                     self.present(alertController, animated: true, completion: nil)
-
-                    func nothing() {
-                        return
-                    }
                     return
                 }
                 
@@ -94,7 +88,6 @@ class UsersTableViewController: UITableViewController {
         // Stretch goal: show details on users such as what chores they do and when they last did them
         
         if let destination = segue.destination as? NewUserViewController {
-            
             destination.userController = userController
         }
     }
