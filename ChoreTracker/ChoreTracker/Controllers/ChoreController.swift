@@ -45,7 +45,11 @@ class ChoreController {
             chores[choreIndex].users.remove(at: 0)
             var catchUpUser = user
             catchUpUser.isCatchUpUser = true
-            chores[choreIndex].users.insert(catchUpUser, at: 1)
+            if chores[choreIndex].users.isEmpty {
+                chores[choreIndex].users.append(catchUpUser)
+            } else {
+                chores[choreIndex].users.insert(catchUpUser, at: 1)
+            }
             if !user.isCatchUpUser {
                 chores[choreIndex].users.append(user)
             }

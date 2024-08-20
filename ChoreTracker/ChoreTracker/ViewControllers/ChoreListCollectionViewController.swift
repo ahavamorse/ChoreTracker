@@ -20,6 +20,7 @@ class ChoreListCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.startAnimating()
+        addExampleData()
         userController.getUsers { _ in
             self.choreController.getChores { _ in
                 DispatchQueue.main.async {
@@ -33,6 +34,18 @@ class ChoreListCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateViews()
+    }
+    
+    func addExampleData() {
+        let user1 = User(name: "User 1")
+        let user2 = User(name: "User 2")
+        let user3 = User(name: "User 3")
+        
+        userController.addUser(newUser: user1)
+        userController.addUser(newUser: user2)
+        userController.addUser(newUser: user3)
+        
+        choreController.addChore(newChore: Chore(name: "Example Chore", users: [user1, user2, user3], frequency: "Daily", instructions: "This is the description that explains how to do the chore."))
     }
     
     func updateViews() {
